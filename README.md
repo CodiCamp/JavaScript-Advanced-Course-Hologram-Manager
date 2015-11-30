@@ -17,6 +17,7 @@ The user can choose the faces number of the hologram
 * Translation - translate on X,Y and Z coordinates the content. This helps for image alignment
 * Rotate - apply rotation to the content
 * Flip - flip the contents and apply realignment
+* move the content by touch interaction
 
 ## 3. Content loading
 * Load images
