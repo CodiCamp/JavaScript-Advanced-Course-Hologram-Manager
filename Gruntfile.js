@@ -77,7 +77,26 @@
             build: {
                 src: ["build/**"]
             }
+        },
+
+        /**
+         * Configure webserver task
+         */
+        connect: {
+
+            server: {
+
+                options: {
+                    port: 8080,
+                    hostname: "*",
+                    base: "build/development",
+                    onCreateServer: function (server, connect, options) {
+
+                    }
+                }
+            }
         }
+
 
     });
 
@@ -88,6 +107,7 @@
     grunt.loadNpmTasks("grunt-contrib-less");
     grunt.loadNpmTasks("grunt-contrib-copy");
     grunt.loadNpmTasks("grunt-contrib-clean");
+    grunt.loadNpmTasks("grunt-contrib-connect");
 
     /**
      * Register tasks
@@ -96,9 +116,12 @@
      */
     grunt.registerTask("default", [ "clean:build", 
                                     "copy:development", 
-                                    "less:development"]);
+                                    "less:development",
+                                    "connect"
+                                    ]);
 
     grunt.registerTask("production", [ "clean:build",
                                         "copy:production",
-                                        "less:production"]);
+                                        "less:production"
+                                        ]);
  };
