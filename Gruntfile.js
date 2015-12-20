@@ -28,6 +28,9 @@
             },
 
             development: {
+                options: {
+                    sourceMap: true
+                },
 
                 files: {
                     "build/development/styles/styles.css": "app/less/main.less"
