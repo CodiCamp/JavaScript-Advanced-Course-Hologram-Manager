@@ -54,9 +54,30 @@
 
             development: {
                 files: [
-                    {expand: true, src: "app/js/**", dest: "build/development"},
+                    {expand: true, cwd: "app/root/development", src: ["**"], dest: "build/development"},
                     {expand: true, src: "app/images/**", dest: "build/development"},
+                    {expand: true, src: "app/js/**", dest: "build/development"},
                     {expand: true, src: "app/templates/**", dest: "build/development"}
+                ]
+            },
+
+            js: {
+                files: [
+                    {expand: true, src: "app/js/**", dest: "build/development"},
+                ]
+            },
+
+            templates: {
+
+                files: [
+                    {expand: true, src: "app/templates/**", dest: "build/development"},
+                ]
+            },
+
+            root: {
+
+                files: [
+                    {expand: true, cwd: "app/root/development", src: ["**"], dest: "build/development"},
                 ]
             },
 
@@ -95,6 +116,54 @@
                     }
                 }
             }
+        },
+
+        /**
+         * Watch for file changes and live reload the server
+         * @css watches for changes in less files and sub directories
+         * @js watches for changes in js files and sub directories
+         * @html watches for changes in template files and sub directories
+         * @root watches for changes in root template file
+         */
+        watch: {
+
+            css: {
+
+                options: {
+                    livereload: true
+                },
+                files: ["app/less/**/*.less"],
+                tasks: ["less:development"]
+            },
+
+            js: {
+
+                options: {
+                    livereload: true
+                },
+
+                files: ["app/js/**/*.js"],
+                tasks: ["copy:js"]
+            },
+
+            html: {
+
+                options: {
+                    livereload: true
+                },
+
+                files: ["app/templates/**/*.html"],
+                tasks: ["copy:templates"]
+            },
+
+            root: {
+                options: {
+                    livereload: true
+                },
+
+                files: ["app/root/development/*.html"],
+                tasks: ["copy:root"]
+            }
         }
 
 
@@ -108,6 +177,7 @@
     grunt.loadNpmTasks("grunt-contrib-copy");
     grunt.loadNpmTasks("grunt-contrib-clean");
     grunt.loadNpmTasks("grunt-contrib-connect");
+    grunt.loadNpmTasks("grunt-contrib-watch");
 
     /**
      * Register tasks
@@ -117,7 +187,8 @@
     grunt.registerTask("default", [ "clean:build", 
                                     "copy:development", 
                                     "less:development",
-                                    "connect"
+                                    "connect",
+                                    "watch"
                                     ]);
 
     grunt.registerTask("production", [ "clean:build",
