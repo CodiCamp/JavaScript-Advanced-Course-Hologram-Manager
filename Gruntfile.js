@@ -10,11 +10,17 @@
     grunt.file.defaultEncoding = 'utf-8';
 
     /**
-     * Setup grunt config
+     * Setup grunt config tasks
      */
     
     grunt.initConfig({
 
+        /**
+         * Less tasks configuration
+         * @options - global options
+         * @development - development setup
+         * @production - production setup
+         */
         less: {
 
             options: {
@@ -37,6 +43,29 @@
                     "build/production/styles/styles.css": "app/less/main.less"
                 }
             }
+        },
+
+        /**
+         * Copy tasks configuration
+         * @development - copies app/js , app/images, app/templates to build/development 
+         * @production - copies app/images, app/templates to build/production
+         */
+        copy: {
+
+            development: {
+                files: [
+                    {expand: true, src: "app/js/**", dest: "build/development"},
+                    {expand: true, src: "app/images/**", dest: "build/development"},
+                    {expand: true, src: "app/templates/**", dest: "build/development"}
+                ]
+            },
+
+            production: {
+                files: [
+                    {expand: true, src: "app/images/**", dest: "build/production"},
+                    {expand: true, src: "app/templates/**", dest: "build/production"}
+                ]
+            }
         }
 
     });
@@ -46,13 +75,14 @@
      * @grunt contrib less - compiles less
      */
     grunt.loadNpmTasks("grunt-contrib-less");
+    grunt.loadNpmTasks("grunt-contrib-copy");
 
     /**
      * Register tasks
      * @default - for development
      * @production - for production releases
      */
-    grunt.registerTask("default", ["less:development"]);
+    grunt.registerTask("default", ["copy:development", "less:development"]);
 
-    grunt.registerTask("production", ["less:production"]);
+    grunt.registerTask("production", ["copy:production", "less:production"]);
  };
