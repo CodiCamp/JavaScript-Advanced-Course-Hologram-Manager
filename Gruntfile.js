@@ -66,6 +66,17 @@
                     {expand: true, src: "app/templates/**", dest: "build/production"}
                 ]
             }
+        },
+        
+        /**
+         * Clean tasks configuration
+         * @build - deleates all files in directory
+         */
+        clean: {
+
+            build: {
+                src: ["build/**"]
+            }
         }
 
     });
@@ -76,13 +87,18 @@
      */
     grunt.loadNpmTasks("grunt-contrib-less");
     grunt.loadNpmTasks("grunt-contrib-copy");
+    grunt.loadNpmTasks("grunt-contrib-clean");
 
     /**
      * Register tasks
      * @default - for development
      * @production - for production releases
      */
-    grunt.registerTask("default", ["copy:development", "less:development"]);
+    grunt.registerTask("default", [ "clean:build", 
+                                    "copy:development", 
+                                    "less:development"]);
 
-    grunt.registerTask("production", ["copy:production", "less:production"]);
+    grunt.registerTask("production", [ "clean:build",
+                                        "copy:production",
+                                        "less:production"]);
  };
