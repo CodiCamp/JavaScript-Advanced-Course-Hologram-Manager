@@ -4,8 +4,10 @@
 	<title>Codicamp Hologram Manager</title>
 
 	<link rel="stylesheet" type="text/css" href="styles/styles.css">
-
-	<script type="text/javascript" src="http://localhost:35729/livereload.js"></script>
+	
+    <% _.each(scripts, function(script){ %>
+        <script type="text/javascript" src="<%= script %>"></script>
+    <% }) %>
 </head>
 <body>
 5
