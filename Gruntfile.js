@@ -28,6 +28,7 @@
             },
 
             development: {
+                
                 options: {
                     sourceMap: true
                 },
@@ -57,7 +58,6 @@
 
             development: {
                 files: [
-                    {expand: true, cwd: "app/root/development", src: ["**"], dest: "build/development"},
                     {expand: true, src: "app/images/**", dest: "build/development"},
                     {expand: true, src: "app/js/**", dest: "build/development"},
                     {expand: true, src: "app/templates/**", dest: "build/development"}
@@ -74,13 +74,6 @@
 
                 files: [
                     {expand: true, src: "app/templates/**", dest: "build/development"},
-                ]
-            },
-
-            root: {
-
-                files: [
-                    {expand: true, cwd: "app/root/development", src: ["**"], dest: "build/development"},
                 ]
             },
 
@@ -164,19 +157,48 @@
                     livereload: true
                 },
 
-                files: ["app/root/development/*.html"],
-                tasks: ["copy:root"]
+                files: ["app/root/*.html"],
+                tasks: ["template:dev"]
+            }
+        },
+
+        template: {
+            
+            dev: {
+                options: {
+                    data: {
+                        scripts: ['http://localhost:35729/livereload.js']
+                    }
+                },
+
+                files: {
+                    'build/development/index.html': ['app/root/index.html']
+                }
+            },
+
+            production: {
+                options: {
+                    data: {
+                        scripts: []
+                    }
+                },
+                
+                files: {
+                    'build/production/index.html': ['app/root/index.html']
+                }                
             }
         }
 
-
     });
+
+
 
     /***
      * Load tasks
      * @grunt contrib less - compiles less
      */
     grunt.loadNpmTasks("grunt-contrib-less");
+    grunt.loadNpmTasks("grunt-template");
     grunt.loadNpmTasks("grunt-contrib-copy");
     grunt.loadNpmTasks("grunt-contrib-clean");
     grunt.loadNpmTasks("grunt-contrib-connect");
@@ -188,6 +210,7 @@
      * @production - for production releases
      */
     grunt.registerTask("default", [ "clean:build", 
+                                    "template:dev",
                                     "copy:development", 
                                     "less:development",
                                     "connect",
@@ -195,6 +218,7 @@
                                     ]);
 
     grunt.registerTask("production", [ "clean:build",
+                                        "template:production",
                                         "copy:production",
                                         "less:production"
                                         ]);
