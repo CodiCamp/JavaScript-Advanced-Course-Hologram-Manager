@@ -1,7 +1,7 @@
 /*
  * function ajaxRequest
  * Abstracts the native XMLHttpRequest
- * main functionalities to 
+ * main functionalities to
  * getData() and sendData()
  */
 var ajaxRequest = (function() {
@@ -13,11 +13,11 @@ var ajaxRequest = (function() {
      *   - {Function} dataHandler: reference to the function which handles the response;
      *   - {String}   url: where we fetch the data from;
      */
-     
+
     function getData(options) {
         var xhr = new XMLHttpRequest();
         options.responseType = options.responseType || 'json';
-        
+
         xhr.onreadystatechange = function() {
             if (xhr.readyState === 4) {
                 if (xhr.status > 199 && xhr.status < 300) {
@@ -28,7 +28,7 @@ var ajaxRequest = (function() {
                     }
 
                     options.dataHandler(response);
-                } 
+                }
             }
         }
 
@@ -53,7 +53,7 @@ var ajaxRequest = (function() {
 
         options.contentType = options.contentType || "application/x-www-form-urlencoded; charset=UTF-8";
         options.responseType = options.responseType || 'json';
-        
+
         if (typeof options.dataHandler === 'function') {
             xhr.onreadystatechange = function() {
                 if (xhr.readyState === 4) {
@@ -65,17 +65,19 @@ var ajaxRequest = (function() {
                         }
 
                         options.dataHandler(response);
-                    } 
+                    }
                 }
             }
         }
 
         if (typeof options.data !== 'undefined') {
             for (var property in data) {
-                params += property+'='+data[property]+'&';
+                if ({}.hasOwnProperty.call(data, property)) {
+                    params += property + '=' + data[property] + '&';
+                }
             }
         }
-      
+
         xhr.open('POST', options.serverHanlder);
         xhr.setRequestHeader("Content-Type", options.contentType);
         xhr.send(params);
