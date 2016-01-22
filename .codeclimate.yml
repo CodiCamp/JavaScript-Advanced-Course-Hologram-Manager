@@ -12,6 +12,8 @@ engines:
     checks:
       complexity:
         enabled: false
+      wrap-iife:
+        enabled: false
   fixme:
     enabled: false
 ratings:
