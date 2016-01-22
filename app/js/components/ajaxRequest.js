@@ -4,7 +4,7 @@
  * main functionalities to
  * getData() and sendData()
  */
-var ajaxRequest = (function() {
+(function (Global) {
     /*
      * function getData
      * @param {Object} options can have the following properties:
@@ -83,8 +83,9 @@ var ajaxRequest = (function() {
         xhr.send(params);
     }
 
-    return {
+    Global.ajaxRequest = {
         getData: getData,
         sendData: sendData
     }
-})();
+
+})(window);
