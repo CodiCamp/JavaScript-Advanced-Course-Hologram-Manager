@@ -2,9 +2,11 @@ var app = app || {};
 
 (function (global){
 
-	 createMain: function (option){
+	var view = {
 
-		this.template = option.template || app.templates.main;
+	 init: function (option){
+
+		this.template = option.template || app.templates.main(data);
 		this.name = option.name;
 		this.placeholder = document.getElementById("content"); 
 
@@ -15,8 +17,9 @@ var app = app || {};
 	render: function(){
 
 		this.placeholder.innerHTML = this.template; 
-
 	}
+
+}
 
 
 })(window)
