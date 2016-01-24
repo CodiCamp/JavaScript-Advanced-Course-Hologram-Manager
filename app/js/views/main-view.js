@@ -6,8 +6,8 @@ var app = app || {};
 
 	var view = {
 
-		init: function (option){
-			this.template = app.templates.main(data);
+		init: function(option){
+			this.template = app.templates.main;
 			this.name = 'baseView';
 			this.placeholder = document.getElementById("content"); 
 
