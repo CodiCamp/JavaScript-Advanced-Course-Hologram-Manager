@@ -1,31 +1,40 @@
-(function() {
-    var templates = {
-        page1: 'Hello, this is page 1',
-        page2: 'Woo, you just got on page2!',
-        page3: 'In the jungle, the mighty jungle... '
-    };
+var templates = {};
 
+(function() {
     var appState = {
         state: {page: ''},
+
         listenForStateChange: function() {
             stateObj = this;
-          
+
             this.addState('page1');
             window.addEventListener('popstate', function(event) {
                 var state = event.state.page;
                 stateObj.addState(state);
             });
         },
+
         addState: function(state) {
             this.state.page = state;
             history.pushState(this.state, '', '');
             this.loadTemplate();
         },
-        loadTemplate: function() {
-           var container = document.querySelector('#container');
-           container.innerHTML = templates[this.state.page];
-        }
 
+        loadTemplate: function() {
+            // Problem with LABjs:
+            // Only scripts are loading and you don't have the ability to load html directly.
+            // How we will protect other files to be loaded?
+            var file = 'templates/' + this.state.page + '.js',
+                callback = function() {
+                    this.render(this.state.page);
+                }.bind(this);
+
+            $LAB.script({ src: file, type: 'text/javascript' }).wait(callback);
+        },
+
+        render: function(template) {
+            document.querySelector('#container').innerHTML = templates[template];
+        }
     };
 
     appState.listenForStateChange();
@@ -36,7 +45,4 @@
             appState.addState(this.dataset.link);
         });
     });
-
-   
-
 })();
