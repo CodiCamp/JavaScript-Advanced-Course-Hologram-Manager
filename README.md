@@ -1,3 +1,5 @@
+<a href="https://codeclimate.com/repos/56a2a48c01630c003a001176/feed"><img src="https://codeclimate.com/repos/56a2a48c01630c003a001176/badges/f398e463e4c6dd0f291a/gpa.svg" /></a>
+
 # JavaScript-Advanced-Course-Hologram-Manager
 
 # Supported devices
