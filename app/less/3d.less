@@ -1,0 +1,128 @@
+/***
+* 3D
+*/
+.d-main {
+    background-color: lightblue;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+.wrapper-d {
+    width: 0;
+    height: 0;
+    margin: 0 auto;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    border: 18vw solid #1F80AF;
+    border-left-color: #0099CC;
+    border-right-color: #0099CC;
+    transform: translate(-50%, -50%);
+}
+.holder {
+    /*position: relative;
+    width: 80vw;
+    height: 86vh;
+    width: 35vw;
+    height: 63.3vh;
+    margin: 0 auto;*/
+    padding: 35%;
+}
+.triangle-1, .triangle-2, .triangle-3, .triangle-4  {
+    position: absolute;
+
+}
+.triangle-1 {
+    /*top: -12vw;*/
+    top: -16.5vw;
+    left: -5vw;
+}
+.triangle-2 {
+    /*left: -12vw;*/
+    left: -16.5vw;
+    top: 5vw;
+    transform: rotate(270deg);
+}
+.triangle-3 {
+    /*right: -12vw;*/
+    right: -16.5vw;
+    top: -5vw;
+    transform: rotate(90deg);
+}
+.triangle-4 {
+    /*bottom: -12vw;*/
+    bottom: -16.5vw;
+    right: -5vw;
+    transform: rotate(180deg);
+}
+/*.triangle-1 img, .triangle-2 img, .triangle-3 img, .triangle-4 img {
+    width: 10vw;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    -webkit-animation: spin 10s linear infinite;
+    animation: spin 10s linear infinite;
+}*/
+.triangle-1 img {
+    width: 10vw;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    -webkit-animation: spin 10s linear infinite;
+    animation: spin 10s linear infinite;
+}
+.triangle-2 img {
+    width: 10vw;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    -webkit-animation: spin-a 10s linear infinite;
+    animation: spin-a 10s linear infinite;
+}
+.triangle-3 img {
+    width: 10vw;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    -webkit-animation: spin-b 10s linear infinite;
+    animation: spin-b 10s linear infinite;
+}
+.triangle-4 img {
+    width: 10vw;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    -webkit-animation: spin-c 10s linear infinite;
+    animation: spin-c 10s linear infinite;
+}
+@-webkit-keyframes spin {
+    from{transform: rotateY(0);}
+    to{transform: rotateY(360deg);}
+}
+@keyframes spin {
+    from{transform: rotateY(0);}
+    to{transform: rotateY(360deg);}
+}
+@-webkit-keyframes spin-a {
+    from{transform: rotateY(0);}
+    to{transform: rotateY(360deg);}
+}
+@keyframes spin-a {
+    from{transform: rotateY(0);}
+    to{transform: rotateY(360deg);}
+}
+@-webkit-keyframes spin-b {
+    from{transform: rotateY(0);}
+    to{transform: rotateY(360deg);}
+}
+@keyframes spin-b {
+    from{transform: rotateY(0);}
+    to{transform: rotateY(360deg);}
+}
+@-webkit-keyframes spin-c {
+    from{transform: rotateY(0);}
+    to{transform: rotateY(360deg);}
+}
+@keyframes spin-c {
+    from{transform: rotateY(0);}
+    to{transform: rotateY(360deg);}
+}
