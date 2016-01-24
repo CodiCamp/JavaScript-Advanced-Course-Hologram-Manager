@@ -9,7 +9,7 @@ var app = app || {};
 		init: function(option){
 			this.template = app.templates.presets;
 			this.name = 'presetsMenu';
-			this.placeholder = document.createElement('aside');
+			this.placeholder = document.getElementById('presets-wrapper');
 
 			render();
 		}
