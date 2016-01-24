@@ -1,9 +1,9 @@
 /***
  * Grunt Task to automate development
  * + less compile
- * 
+ *
  **/
- 
+
  module.exports = function (grunt) {
 
     //just in case set the default encoding
@@ -12,7 +12,7 @@
     /**
      * Setup grunt config tasks
      */
-    
+
     grunt.initConfig({
 
         /**
@@ -28,7 +28,7 @@
             },
 
             development: {
-                
+
                 options: {
                     sourceMap: true
                 },
@@ -51,7 +51,7 @@
 
         /**
          * Copy tasks configuration
-         * @development - copies app/js , app/images, app/templates to build/development 
+         * @development - copies app/js , app/images, app/templates to build/development
          * @production - copies app/images, app/templates to build/production
          */
         copy: {
@@ -60,20 +60,23 @@
                 files: [
                     {expand: true, src: "app/images/**", dest: "build/development"},
                     {expand: true, src: "app/js/**", dest: "build/development"},
-                    {expand: true, src: "app/templates/**", dest: "build/development"}
+                    {expand: true, src: "app/templates/**", dest: "build/development"},
+                    {expand: true, src: "app/modules/**", dest: "build/development"}
+
                 ]
             },
 
             js: {
                 files: [
                     {expand: true, src: "app/js/**", dest: "build/development"},
+                    {expand: true, src: "app/modules/**", dest: "build/development"}
                 ]
             },
 
             templates: {
 
                 files: [
-                    {expand: true, src: "app/templates/**", dest: "build/development"},
+                    {expand: true, src: "app/templates/**", dest: "build/development"}
                 ]
             },
 
@@ -84,7 +87,7 @@
                 ]
             }
         },
-        
+
         /**
          * Clean tasks configuration
          * @build - deleates all files in directory
@@ -163,11 +166,13 @@
         },
 
         template: {
-            
+
             dev: {
                 options: {
                     data: {
-                        scripts: ['http://localhost:35729/livereload.js']
+                        scripts: ['http://localhost:35729/livereload.js',
+                                    'app/js/vendor/lab.min.js',
+                                    'app/js/vendor/underscore.js']
                     }
                 },
 
@@ -179,13 +184,14 @@
             production: {
                 options: {
                     data: {
-                        scripts: []
+                        scripts: ['app/js/vendor/lab.min.js',
+                                    'app/js/vendor/underscore.js']
                     }
                 },
-                
+
                 files: {
                     'build/production/index.html': ['app/root/index.html']
-                }                
+                }
             }
         }
 
@@ -209,9 +215,9 @@
      * @default - for development
      * @production - for production releases
      */
-    grunt.registerTask("default", [ "clean:build", 
+    grunt.registerTask("default", [ "clean:build",
                                     "template:dev",
-                                    "copy:development", 
+                                    "copy:development",
                                     "less:development",
                                     "connect",
                                     "watch"
