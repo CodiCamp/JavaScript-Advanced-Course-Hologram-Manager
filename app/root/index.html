@@ -1,21 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Codicamp Hologram Manager</title>
+    <title>Codicamp Hologram Manager</title>
 
-	<link rel="stylesheet" type="text/css" href="styles/styles.css">
-	
+    <link rel="stylesheet" type="text/css" href="styles/styles.css">
+    
     <% _.each(scripts, function(script){ %>
         <script type="text/javascript" src="<%= script %>"></script>
     <% }) %>
 </head>
 <body>
 
-	<div id="content"></div>
+    <div id="content"></div>
 
-
-	<script type="text/javascript" src="../app/js/templates/templates.js"></script>
-	<script type="text/javascript" src="../app/js/views/main-view.js"></script>
-	
+    <script type="text/javascript" src="app/js/app.js"></script>
 </body>
 </html>
