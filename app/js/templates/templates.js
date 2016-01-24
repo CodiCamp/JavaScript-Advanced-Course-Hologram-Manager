@@ -21,7 +21,7 @@ var app = app || {};
 			'</div>'
 			],
 
-		edit: [
+		settings: [
 
 			'<div class="wrapper">',
 
@@ -43,7 +43,7 @@ var app = app || {};
 			'</div>'
 		],
 
-		preset: [
+		presets: [
 
 			'<div class="">',
 

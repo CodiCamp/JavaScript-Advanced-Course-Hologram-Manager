@@ -1,25 +1,22 @@
+// Initial
+
 var app = app || {};
 
 (function (global){
 
 	var view = {
 
-	 init: function (option){
+		init: function (option){
+			this.template = app.templates.main(data);
+			this.name = 'baseView';
+			this.placeholder = document.getElementById("content"); 
 
-		this.template = option.template || app.templates.main(data);
-		this.name = option.name;
-		this.placeholder = document.getElementById("content"); 
+			render();
+		},
 
-		render();
-		
-	},
-
-	render: function(){
-
-		this.placeholder.innerHTML = this.template; 
+		render: function(){
+			this.placeholder.innerHTML = this.template; 
+		}
 	}
-
-}
-
 
 })(window)
