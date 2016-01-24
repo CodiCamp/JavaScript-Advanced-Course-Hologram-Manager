@@ -9,25 +9,18 @@ var app = window.app || {};
     app.model = {
 
         get: function(key){
-            var value = localStorage.getItem(key);
 
-            if (!value) {return;}
-
-            // in case it is an object that has been stringified
-            if (value[0] === "{") {
-              value = JSON.parse(value);
-            }
+            var value = JSON.parse(localStorage.key);
 
             return value;
         },
 
-        set: function(key, value){
-            if (!key || !value) {return;}
+        set: function(key,obj){
 
-            if (typeof value === "object") {
-              value = JSON.stringify(value);
-            }
-            localStorage.setItem(key, value);
+            var  value = JSON.stringify(obj);
+
+            localStorage.setItem(key,value);
+
         },
 
         parse: function(obj){
