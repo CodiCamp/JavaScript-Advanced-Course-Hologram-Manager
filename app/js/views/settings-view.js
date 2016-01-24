@@ -9,7 +9,7 @@ var app = app || {};
 		init: function(option){
 			this.template = app.templates.settings;
 			this.name = 'settingsMenu';
-			this.placeholder = document.createElement('aside');
+			this.placeholder = document.getElementById('settings-wrapper');
 
 			render();
 		}
