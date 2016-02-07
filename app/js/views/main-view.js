@@ -11,12 +11,12 @@ var app = app || {};
 			this.name = 'baseView';
 			this.placeholder = document.getElementById("content"); 
 
-			render();
+			this.render();
 		},
 
 		render: function(){
 			this.placeholder.innerHTML = this.template; 
 		}
-	}
+	};
 
-})(window)
+})(window);
