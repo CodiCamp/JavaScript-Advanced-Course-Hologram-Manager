@@ -12,7 +12,7 @@
         }
     };
 
-    var bootstrapApp = (function(){
+    var bootstrapApp = (function(app){
 
         //TASK: Load all other modules and scripts via $LAB
         var modules = ['state.js'];
@@ -27,6 +27,6 @@
 
     })(app);
 
-            
+
 
 })(window.app || {});
