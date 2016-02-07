@@ -4,20 +4,25 @@ var app = app || {};
 
 (function(Global){
 
-	var view = {
+    app.views.presetsView = {
 
-		init: function(option){
-			this.template = app.templates.presets;
-			this.name = 'presetsMenu';
-			this.placeholder = document.getElementById('presets-wrapper');
+        name: 'presets',
+        
+        init: function(option){
+            this.template = Templates[this.name];
+            this.placeholder = document.getElementById('presets-wrapper');
 
-			this.render();
-		},
+            this.render();
+        },
 
-		render: function(){
-			this.placeholder.innerHTML = this.template;
+        render: function(){
+            this.placeholder.innerHTML = this.template;
 
-		}
-	};
-	
+        },
+
+        destroy: function () {
+            console.info('Destroyed: ' + this.name);
+        }
+    };
+    
 })(window);
