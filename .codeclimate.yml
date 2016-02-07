@@ -25,4 +25,7 @@ ratings:
   - "**.php"
   - "**.py"
   - "**.rb"
-exclude_paths: ["build", "design", "wire"]
+exclude_paths:
+  - build/**/*
+  - design/**/*
+  - wire/**/*
