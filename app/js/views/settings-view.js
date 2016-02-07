@@ -2,7 +2,7 @@
 
 var app = app || {};
 
-(function(global){
+(function(Global){
 
 	var view = {
 
@@ -11,13 +11,13 @@ var app = app || {};
 			this.name = 'settingsMenu';
 			this.placeholder = document.getElementById('settings-wrapper');
 
-			render();
-		}
+			this.render();
+		},
 
 		render: function(){
-			this.plaseholder.innerHTML = this.template;
+			this.placeholder.innerHTML = this.template;
 
 		}
-	}
+	};
 	
-})(window)
+})(window);
