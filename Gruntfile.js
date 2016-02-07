@@ -60,7 +60,6 @@
                 files: [
                     {expand: true, src: "app/images/**", dest: "build/development"},
                     {expand: true, src: "app/js/**", dest: "build/development"},
-                    {expand: true, src: "app/templates/**", dest: "build/development"},
                     {expand: true, src: "app/modules/**", dest: "build/development"}
 
                 ]
@@ -73,17 +72,9 @@
                 ]
             },
 
-            templates: {
-
-                files: [
-                    {expand: true, src: "app/templates/**", dest: "build/development"}
-                ]
-            },
-
             production: {
                 files: [
-                    {expand: true, src: "app/images/**", dest: "build/production"},
-                    {expand: true, src: "app/templates/**", dest: "build/production"}
+                    {expand: true, src: "app/images/**", dest: "build/production"}
                 ]
             }
         },
@@ -141,7 +132,7 @@
                     livereload: true
                 },
 
-                files: ["app/js/**/*.js"],
+                files: ["app/js/**/*.js", "app/modules/**/*.js"],
                 tasks: ["copy:js"]
             },
 
@@ -152,7 +143,7 @@
                 },
 
                 files: ["app/templates/**/*.html"],
-                tasks: ["copy:templates"]
+                tasks: ["jst:dev"]
             },
 
             root: {
@@ -193,6 +184,26 @@
                     'build/production/index.html': ['app/root/index.html']
                 }
             }
+        },
+
+        jst: {
+
+            options: {
+                namespace: 'Templates',
+                prettify: true,
+                processName: function(filepath) {
+                    var path = filepath.split('.')[0].split('/');
+
+                    return path[path.length-1];
+                  }
+            },
+
+            dev: {
+
+                files: {
+                    "build/development/app/tempaltes/templates.js": ["app/templates/**/*.html"]
+                }
+            }
         }
 
     });
@@ -205,6 +216,7 @@
      */
     grunt.loadNpmTasks("grunt-contrib-less");
     grunt.loadNpmTasks("grunt-template");
+    grunt.loadNpmTasks('grunt-contrib-jst');
     grunt.loadNpmTasks("grunt-contrib-copy");
     grunt.loadNpmTasks("grunt-contrib-clean");
     grunt.loadNpmTasks("grunt-contrib-connect");
@@ -217,6 +229,7 @@
      */
     grunt.registerTask("default", [ "clean:build",
                                     "template:dev",
+                                    "jst:dev",
                                     "copy:development",
                                     "less:development",
                                     "connect",
