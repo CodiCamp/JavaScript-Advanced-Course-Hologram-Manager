@@ -8,6 +8,10 @@ var app = window.app || {};
 
     app.model = {
 
+        /**
+         * @param  {String} key
+         * @return {Object} value
+         */
         get: function(key){
 
             var value = JSON.parse(localStorage.key);
@@ -15,6 +19,10 @@ var app = window.app || {};
             return value;
         },
 
+        /**
+         * @param {String} key
+         * @param {Object} obj
+         */
         set: function(key,obj){
 
             var  value = JSON.stringify(obj);
