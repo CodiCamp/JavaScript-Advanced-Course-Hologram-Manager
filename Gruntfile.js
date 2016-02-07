@@ -59,7 +59,7 @@
             development: {
                 files: [
                     {expand: true, src: "app/images/**", dest: "build/development"},
-                    {expand: true, src: "app/js/**", dest: "build/development"},
+                    {expand: true, cwd: "app/js", src: ["**"], dest: "build/development/app"},
                     {expand: true, src: "app/modules/**", dest: "build/development"}
 
                 ]
@@ -67,7 +67,7 @@
 
             js: {
                 files: [
-                    {expand: true, src: "app/js/**", dest: "build/development"},
+                    {expand: true, cwd: "app/js/", src: ["**"], dest: "build/development/app"},
                     {expand: true, src: "app/modules/**", dest: "build/development"}
                 ]
             },
@@ -162,8 +162,8 @@
                 options: {
                     data: {
                         scripts: ['http://localhost:35729/livereload.js',
-                                    'app/js/vendor/lab.min.js',
-                                    'app/js/vendor/underscore.js']
+                                    'app/vendor/lab.min.js',
+                                    'app/vendor/underscore.js']
                     }
                 },
 
@@ -201,7 +201,7 @@
             dev: {
 
                 files: {
-                    "build/development/app/tempaltes/templates.js": ["app/templates/**/*.html"]
+                    "build/development/app/templates/templates.js": ["app/templates/**/*.html"]
                 }
             }
         }
