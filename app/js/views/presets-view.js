@@ -1,8 +1,8 @@
-// Preset menu
+// Presets menu
 
 var app = app || {};
 
-(function(global){
+(function(Global){
 
 	var view = {
 
@@ -11,13 +11,13 @@ var app = app || {};
 			this.name = 'presetsMenu';
 			this.placeholder = document.getElementById('presets-wrapper');
 
-			render();
-		}
+			this.render();
+		},
 
 		render: function(){
-			this.plaseholder.innerHTML = this.template;
+			this.placeholder.innerHTML = this.template;
 
 		}
-	}
+	};
 	
-})(window)
+})(window);
