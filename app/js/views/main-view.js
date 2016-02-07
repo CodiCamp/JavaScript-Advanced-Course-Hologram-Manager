@@ -4,19 +4,24 @@ var app = app || {};
 
 (function (global){
 
-	var view = {
+    app.views.mainView = {
+        name: 'main',
+        
+        init: function(option){
+            
+            this.template = Templates[this.name];
+            this.placeholder = document.getElementById("content"); 
 
-		init: function(option){
-			this.template = app.templates.main;
-			this.name = 'baseView';
-			this.placeholder = document.getElementById("content"); 
+            this.render();
+        },
 
-			this.render();
-		},
+        render: function(){
+            this.placeholder.innerHTML = this.template; 
+        },
 
-		render: function(){
-			this.placeholder.innerHTML = this.template; 
-		}
-	};
+        destroy: function () {
+            console.info('Destroyed: ' + this.name);
+        }
+    };
 
 })(window);
