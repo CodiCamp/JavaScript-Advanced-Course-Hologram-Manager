@@ -23,7 +23,7 @@
      * Initialize app modules
      */
     var initApp = function () {
-        
+
         Events.publish(document, 'app:init');
     };
 
@@ -33,7 +33,7 @@
     //define required files
     var files = {
         templates: ['templates.js'],
-        components: ['generic-view.js', 'events.js'],
+        components: ['initable.js', 'generic-view.js', 'events.js'],
         views: ['main-view.js', 'presets-view.js', 'settings-view.js'],
         modules: ['state.js']
     };
@@ -46,7 +46,7 @@
         });
 
         _.each(files, function (value, key) {
-            
+
             //Load modules
             scriptsToLoad = scriptsToLoad.concat(_.map(value, function(module) {
                 return app.config.path[key] + module;
@@ -54,9 +54,9 @@
         });
 
         $LAB.script(scriptsToLoad)
-        .wait(function () {
-            initApp();
-        });
+            .wait(function () {
+                initApp();
+            });
 
     })(app);
 
