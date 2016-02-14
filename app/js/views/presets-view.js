@@ -1,12 +1,10 @@
 // Presets menu
 
-var app = app || {};
-
-(function(Global) {
+(function(Global, app) {
 
     app.views.presetsView = {
         name : 'presets'
     };
     _.extend(app.views.presetsView, Global.GenericView);
     
-})(window);
+})(window, window.app);
