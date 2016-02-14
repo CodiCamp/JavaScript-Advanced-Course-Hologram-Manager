@@ -5,5 +5,7 @@
         name: 'settings'
     };
     _.extend(app.views.settingsView, Global.GenericView);
+
+    app.views.settingsView.listenForInit();
     
 })(window, window.app);
