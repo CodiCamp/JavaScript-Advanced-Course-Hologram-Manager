@@ -1,27 +1,9 @@
 // Settings menu
-
-var app = app || {};
-
-(function(Global){
+(function(Global, app) {
 
     app.views.settingsView = {
-        name: 'settings',
-
-        init: function(option){
-            this.template = Templates[this.name];
-            this.placeholder = document.getElementById('settings-wrapper');
-
-            this.render();
-        },
-
-        render: function(){
-            this.placeholder.innerHTML = this.template;
-
-        },
-
-        destroy: function () {
-            console.info('Destroyed: ' + this.name);
-        }
+        name: 'settings'
     };
+    _.extend(app.views.settingsView, Global.GenericView);
     
-})(window);
+})(window, window.app);
