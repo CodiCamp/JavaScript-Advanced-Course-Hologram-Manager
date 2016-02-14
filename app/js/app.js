@@ -11,6 +11,7 @@
 
         path: {
             root: 'app/',
+            components: 'components/',
             modules: 'modules/',
             templates: 'templates/',
             views: 'views/'
@@ -23,12 +24,12 @@
     //define required files
     var files = {
         modules: ['state.js'],
+        components: ['generic-view.js'],
         templates: ['templates.js'],
         views: ['main-view.js', 'presets-view.js', 'settings-view.js']
     };
 
     var bootstrapApp = (function(app){
-
 
         $LAB.setGlobalDefaults({
             BasePath: app.config.path.root
@@ -41,7 +42,6 @@
                 return app.config.path[key] + module;
             }));
         });
-
 
     })(app);
 
