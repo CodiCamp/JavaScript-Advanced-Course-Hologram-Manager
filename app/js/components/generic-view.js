@@ -9,8 +9,6 @@
         init: function() {
             this.template = Templates[this.name];
             this.placeholder = document.getElementById(this.name + '-wrapper');
-
-            // this.render();
         },
 
         render: function() {
@@ -21,5 +19,7 @@
             console.info('Destroyed: ' + this.name);
         }
     };
+
+    _.extendOwn(Global.GenericView, Global.Initable);
 
 })(window);

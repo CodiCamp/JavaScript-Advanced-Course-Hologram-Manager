@@ -1,10 +1,10 @@
-(function(app) {
+(function(Global, app) {
 
     /**
      * TO DO: Link to the main app namespace
      */
 
-    var stateObject = app.stateObject = {
+    app.stateObject = {
 
         page: null,
         routes: [],
@@ -46,6 +46,6 @@
         }
     };
 
-    Events.subscribe(document, 'app:init', stateObject.init.bind(stateObject));
+    Global.Initable.extend(app.stateObject);
     
-})(window.app || {});
+})(window, window.app || {});
