@@ -4,7 +4,7 @@
      * TO DO: Link to the main app namespace
      */
 
-    app.stateObject = {
+    var stateObject = app.stateObject = {
 
         page: null,
         routes: [],
@@ -39,11 +39,13 @@
             app.views[state + 'View'].render();
         },
 
-        setup: function () {
+        init: function () {
 
             this.addState('main');
             this.listenForStateChange();
         }
     };
+
+    Events.subscribe(document, 'app:init', stateObject.init.bind(stateObject));
     
 })(window.app || {});

@@ -29,15 +29,7 @@ var Events = {
         el.addEventListener(eventName,handler,false);
     },
 
-    // elem.addEventListener(eventName, function(e) {
-    //        // in the event handler function here, you can directly refer
-    //        // to arg1 and arg2 from the parent function arguments
-    // }, false);
-
-    // element.addEventListener('click', (function(passedInElement) {
-    //     return function(e) {func(e, passedInElement); };
-    // }) (this.elements[i]), false);
-
+    //TO DO: Add subscribe once - Sasho
 
     /***
      * Publishes an event to the listneres
