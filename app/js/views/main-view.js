@@ -1,22 +1,9 @@
 // Initial
+(function(Global, app) {
 
-var app = app || {};
+    app.views.mainView = {
+        name: 'main'
+    };
+    _.extend(app.views.mainView, Global.GenericView);
 
-(function (global){
-
-	var view = {
-
-		init: function(option){
-			this.template = app.templates.main;
-			this.name = 'baseView';
-			this.placeholder = document.getElementById("content"); 
-
-			this.render();
-		},
-
-		render: function(){
-			this.placeholder.innerHTML = this.template; 
-		}
-	};
-
-})(window);
+})(window, window.app);

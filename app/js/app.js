@@ -5,24 +5,31 @@
 (function (Global) {
     Global.app = Global.app || {};
 
+    var states = [];
+
     app.config = {
 
         path: {
             root: 'app/',
+            components: 'components/',
             modules: 'modules/',
             templates: 'templates/',
             views: 'views/'
         }
     };
 
-    var bootstrapApp = (function(app){
+    //Define namespace for views
+    app.views = {};
 
-        //TASK: Load all other modules and scripts via $LAB
-        var files = {
-            modules: ['state.js'],
-            templates: ['templates.js'],
-            views: ['main-view.js', 'presets-view.js', 'settings-view.js']
-        };
+    //define required files
+    var files = {
+        modules: ['state.js'],
+        components: ['generic-view.js'],
+        templates: ['templates.js'],
+        views: ['main-view.js', 'presets-view.js', 'settings-view.js']
+    };
+
+    var bootstrapApp = (function(app){
 
         $LAB.setGlobalDefaults({
             BasePath: app.config.path.root
@@ -35,7 +42,6 @@
                 return app.config.path[key] + module;
             }));
         });
-
 
     })(app);
 

@@ -4,18 +4,17 @@
      * TO DO: Link to the main app namespace
      */
 
-    app.state = {
+    app.stateObject = {
 
-        state: {page: ''},
+        page: null,
+        routes: [],
 
         /**
          * [listenForStateChange description]
          * @return {Void} [description]
          */
         listenForStateChange: function() {
-            stateObj = this;
-
-            this.addState('page1');
+            var stateObj = this;
 
             window.addEventListener('popstate', function(event) {
                 var state = event.state.page;
@@ -25,15 +24,26 @@
 
         /**
          * Add state - equals to routing
-         * @param {Object} state
+         * @param {String} state
          * @return {Void}
          */
         addState: function(state) {
-            this.state.page = state;
+            
+            if (this.page) {
+                app.views[this.page + 'View'].destroy();
+            }
+
+            this.page = state;
             history.pushState(this.state, '', '');
+
+            app.views[state + 'View'].render();
+        },
+
+        setup: function () {
+
+            this.addState('main');
+            this.listenForStateChange();
         }
     };
-
-    app.state.listenForStateChange();
     
 })(window.app || {});
