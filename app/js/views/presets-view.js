@@ -1,28 +1,10 @@
 // Presets menu
 
-var app = app || {};
-
-(function(Global){
+(function(Global, app) {
 
     app.views.presetsView = {
-
-        name: 'presets',
-        
-        init: function(option){
-            this.template = Templates[this.name];
-            this.placeholder = document.getElementById('presets-wrapper');
-
-            this.render();
-        },
-
-        render: function(){
-            this.placeholder.innerHTML = this.template;
-
-        },
-
-        destroy: function () {
-            console.info('Destroyed: ' + this.name);
-        }
+        name : 'presets'
     };
+    _.extend(app.views.presetsView, Global.GenericView);
     
-})(window);
+})(window, window.app);
