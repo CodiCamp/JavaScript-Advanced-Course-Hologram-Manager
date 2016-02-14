@@ -1,12 +1,9 @@
 // Settings menu
-
-var app = app || {};
-
-(function(Global) {
+(function(Global, app) {
 
     app.views.settingsView = {
         name: 'settings'
     };
     _.extend(app.views.settingsView, Global.GenericView);
     
-})(window);
+})(window, window.app);
