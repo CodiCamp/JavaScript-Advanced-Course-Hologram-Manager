@@ -1,27 +1,10 @@
 // Initial
-
-var app = app || {};
-
-(function (global){
+(function(Global, app) {
 
     app.views.mainView = {
-        name: 'main',
-        
-        init: function(option){
-            
-            this.template = Templates[this.name];
-            this.placeholder = document.getElementById("content"); 
-
-            this.render();
-        },
-
-        render: function(){
-            this.placeholder.innerHTML = this.template; 
-        },
-
-        destroy: function () {
-            console.info('Destroyed: ' + this.name);
-        }
+        name: 'main'
     };
 
-})(window);
+    Global.GenericView.extend(app.views.mainView);
+
+})(window, window.app);
