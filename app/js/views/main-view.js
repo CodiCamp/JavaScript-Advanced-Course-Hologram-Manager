@@ -2,7 +2,11 @@
 (function(Global, app) {
 
     app.views.mainView = {
-        name: 'main'
+        name: 'main',
+        init: function () {
+            console.log(this.name);
+        }
+
     };
 
     Global.GenericView.extend(app.views.mainView);
