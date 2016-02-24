@@ -39,7 +39,7 @@
             app.views[state + 'View'].render();
         },
 
-        init: function () {
+        initialize: function () {
 
             this.addState('main');
             this.listenForStateChange();
