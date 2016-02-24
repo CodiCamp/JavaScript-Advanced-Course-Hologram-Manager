@@ -6,9 +6,11 @@
 
     Global.GenericView = {
 
-        init: function() {
+        initialize: function() {
             this.template = Templates[this.name];
             this.placeholder = document.getElementById(this.name + '-wrapper');
+
+            this.init();
         },
 
         render: function() {
