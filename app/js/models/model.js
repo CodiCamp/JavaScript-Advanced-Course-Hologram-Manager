@@ -9,33 +9,30 @@ var app = window.app || {};
     app.model = {
 
         /**
-         * Settings object - keeps image properties
+         * Model object - keeps image properties
          * @type {Object}
          */
-        settings: {
+        defaults: {
             scaled : {
-                width : 'width:' + widthValue,
-                height : 'height' + heightValue
+                width :  0 ,
+                height :  0
             },
             translated: {
                 x : x,
                 y : y,
-                z : z
+                z : z //
             },
-            rotated : 'rotate('+deg+'deg)',
+            rotated : deg,
             fliped : {
 
-                horizontalFront : 'transform: rotateX(180deg)',
-                horizontalBack : 'transform: rotateX(-180deg)',
-                verticalFront : 'transform: rotateY(180deg)',
-                verticalBack : 'transform: rotateY(-180deg)'
+                horizontal: 0,
+                vertical : 0,
 
             },
             moved : {
-                left : 'translate('+x+','+y+')',
-                right: 'translate('+x+','+y+')',
-                up : 'translate('+x+','+y+')',
-                down : 'translate('+x+','+y+')'
+                x : x,
+                y : y,
+                z : z
             }
         },
 
