@@ -3,13 +3,9 @@
 *, *:before, *:after {
     margin: 0;
     padding: 0;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
-body {
-    background: #336699;
-}
+
 /******************************************************************************************************
             HEADER STYLES
 ******************************************************************************************************/
@@ -21,16 +17,12 @@ body {
     top: 0;
     left: 0;
     z-index: 1;
-    -webkit-transition: all 0.2s cubic-bezier(.450, .450, .950, .950);
-    -moz-transition: all 0.2s cubic-bezier(.450, .450, .950, .950);
     transition: all 0.2s cubic-bezier(.450, .450, .950, .950);
 }
 .certain.active {
     right: 0;
     bottom: 0;
     background: rgba(0, 0, 0, 0.5);
-    -webkit-transition: all 0.2s cubic-bezier(.450, .450, .950, .950);
-    -moz-transition: all 0.2s cubic-bezier(.450, .450, .950, .950);
     transition: all 0.2s cubic-bezier(.450, .450, .950, .950);
 }
 .nav {
@@ -42,8 +34,6 @@ body {
     width: 300px;
     top: 0;
     background: #000;
-    -webkit-transition: left 0.2s cubic-bezier(.450, .450, .950, .950);
-    -moz-transition: left 0.2s cubic-bezier(.450, .450, .950, .950);
     transition: left 0.2s cubic-bezier(.450, .450, .950, .950);
 }
 .nav.active {
@@ -74,8 +64,6 @@ body {
     border-left: 130px solid transparent;
     border-bottom: 130px solid #467EB7;
     z-index: -1;
-    -webkit-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
 }
 .nav-link {
@@ -105,8 +93,6 @@ body {
     position: absolute;
     top: 0;
     right: 0;
-    -webkit-transition: all 0.3s cubic-bezier(.450, .450, .950, .950);
-    -moz-transition: all 0.3s cubic-bezier(.450, .450, .950, .950);
     transition: all 0.3s cubic-bezier(.450, .450, .950, .950);
 }
 .nav.active .close-btn {
@@ -122,8 +108,6 @@ body {
     color: #467EB7;
     font-size: 20px;
     font-family: sans-serif;
-    -webkit-transition: all 0.3s cubic-bezier(.450, .450, .950, .950);
-    -moz-transition: all 0.3s cubic-bezier(.450, .450, .950, .950);
     transition: all 0.3s cubic-bezier(.450, .450, .950, .950);
 }
 .button {
@@ -139,8 +123,6 @@ body {
     color: #336699;
     font-weight: bold;
     padding: 0;
-    -webkit-transition: all 0.3s cubic-bezier(.450, .450, .950, .950);
-    -moz-transition: all 0.3s cubic-bezier(.450, .450, .950, .950);
     transition: all 0.3s cubic-bezier(.450, .450, .950, .950);
 }
 .button.active {
@@ -148,8 +130,6 @@ body {
     padding: 20px;
     font-size: 16px;
     text-transform: uppercase;
-    -webkit-transition: all 0.3s cubic-bezier(.450, .450, .950, .950);
-    -moz-transition: all 0.3s cubic-bezier(.450, .450, .950, .950);
     transition: all 0.3s cubic-bezier(.450, .450, .950, .950);
 }
 
@@ -162,72 +142,107 @@ body {
 .wrapper.no-cursor {
     cursor: none;
 }
-.main-container {
-    margin: auto;
-    background: #336699;
-    position: relative;
-    cursor: default;
+body {
+    background: #000;
 }
-.main-img {
-    width: 100%;
-}
-.triangle-one,
-.triangle-two,
-.triangle-three,
-.triangle-four {
-    position: absolute;
-}
-.triangle-one {
-    left: 50%;
-    top: 5%;
-    -webkit-transform: translate(-50%, 0);
-    -moz-transform: translate(-50%, 0);
-    transform: translate(-50%, 0);
-}
-.triangle-two {
-    top: 50%;
-    right: 5%;
-    -webkit-transform: translate(0, -50%);
-    -moz-transform: translate(0, -50%);
-    transform: translate(0, -50%);}
 
-.triangle-three {
-    left: 50%;
-    bottom: 5%;
-    -webkit-transform: translate(-50%, 0);
-    -moz-transform: translate(-50%, 0);
-    transform: translate(-50%, 0);
-}
-.triangle-four {
-    top: 50%;
-    left: 5%;
-    -webkit-transform: translate(0, -50%);
-    -moz-transform: translate(0, -50%);
-    transform: translate(0, -50%);
-}
-.triangle-one .main-img,
-.triangle-two .main-img,
-.triangle-three .main-img,
-.triangle-four .main-img {
+#projection {
     position: absolute;
+    /*border: 1px solid red;*/
+    overflow: hidden;
 }
-.triangle-one  .main-img {
-    -webkit-transform: rotate(0deg);
-    -moz-transform: rotate(0deg);
-    transform: rotate(0deg);
+
+.surface {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform-origin: 50% 50%;
+    overflow: hidden;
 }
-.triangle-two  .main-img {
-    -webkit-transform: rotate(90deg);
-    -moz-transform: rotate(90deg);
-    transform: rotate(90deg);
+.surface-content {
+    height: 100%;
 }
-.triangle-three  .main-img {
-    -webkit-transform: rotate(180deg);
-    -moz-transform: rotate(180deg);
-    transform: rotate(180deg);
+
+.surface-top {
+    /*background: #fafafa;*/
+    transform: translate(0, -70.65%) rotate(45deg);
 }
-.triangle-four  .main-img {
-    -webkit-transform: rotate(270deg);
-    -moz-transform: rotate(270deg);
-    transform: rotate(270deg);
+
+.surface-bottom {
+    /*background: #dababa;*/
+    transform: translate(0, 70.65%) rotate(45deg);
+}
+
+.surface-left {
+    /*background: #dc7402;*/
+    transform: translate(-70.65%, 0) rotate(45deg);
+}
+
+.surface-right {
+    /*background: #7402dc;*/
+    transform: translate(70.65%, 0) rotate(45deg);
+}
+
+.surface-top .surface-content {
+    transform: translate(19%, 19%);
+}
+.surface-right .surface-content {
+    transform: translate(-19%, 19%);
+}
+.surface-bottom .surface-content {
+    transform: translate(-19%, -19%);
+}
+.surface-left .surface-content {
+    transform: translate(19%, -19%);
+}
+
+.surface-content .surface-inner-wrapper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    text-align: center;
+}
+
+.surface-content img {
+    /*width: 100%;
+    height: 100%;*/
+    width: 210px;
+    margin-top: 280px;
+    position: relative;
+}
+
+.surface-top .surface-content .surface-inner-wrapper {
+    transform: rotate(135deg);
+}
+
+.surface-right .surface-content .surface-inner-wrapper {
+    transform: rotate(-135deg);
+}
+
+.surface-bottom .surface-content .surface-inner-wrapper {
+    transform: rotate(-45deg);
+}
+
+.surface-left .surface-content .surface-inner-wrapper {
+    transform: rotate(45deg);
+}
+
+.flip .surface-top .surface-content .surface-inner-wrapper {
+    transform: rotate(-45deg);
+}
+
+.flip .surface-right .surface-content .surface-inner-wrapper {
+    transform: rotate(45deg);
+}
+
+.flip .surface-bottom .surface-content .surface-inner-wrapper {
+    transform: rotate(135deg);
+}
+
+.flip .surface-left .surface-content .surface-inner-wrapper {
+    transform: rotate(-135deg);
+}
+
+:-webkit-full-screen {
+    background-color: #000;
 }
