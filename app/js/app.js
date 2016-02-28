@@ -7,6 +7,7 @@
 
     var states = [];
 
+    app.run = [];
     app.config = {
 
         path: {
@@ -18,33 +19,45 @@
         }
     };
 
+    /***
+     * Initialize app modules
+     */
+    var initApp = function () {
+
+        Events.publish(document, 'app:init');
+    };
+
     //Define namespace for views
     app.views = {};
 
     //define required files
     var files = {
-        modules: ['state.js'],
-        components: ['generic-view.js'],
         templates: ['templates.js'],
-        views: ['main-view.js', 'presets-view.js', 'settings-view.js']
+        components: ['initable.js', 'generic-view.js', 'events.js'],
+        views: ['main-view.js', 'presets-view.js', 'settings-view.js'],
+        modules: ['state.js']
     };
 
     var bootstrapApp = (function(app){
+        var scriptsToLoad = [];
 
         $LAB.setGlobalDefaults({
             BasePath: app.config.path.root
         });
 
         _.each(files, function (value, key) {
-            
+
             //Load modules
-            $LAB.script(_.map(value, function(module) {
+            scriptsToLoad = scriptsToLoad.concat(_.map(value, function(module) {
                 return app.config.path[key] + module;
             }));
         });
 
+        $LAB.script(scriptsToLoad)
+            .wait(function () {
+                initApp();
+            });
+
     })(app);
-
-
 
 })(window);

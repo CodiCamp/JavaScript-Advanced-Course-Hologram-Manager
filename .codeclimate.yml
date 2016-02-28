@@ -33,3 +33,4 @@ exclude_paths:
   - wire/**/*
   - app/js/vendor/**/*
   - "app/js/components/ajaxRequest.js"
+  - hologram-UI/**/*

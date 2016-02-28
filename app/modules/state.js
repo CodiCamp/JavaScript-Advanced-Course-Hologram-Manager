@@ -1,4 +1,4 @@
-(function(app) {
+(function(Global, app) {
 
     /**
      * TO DO: Link to the main app namespace
@@ -39,11 +39,13 @@
             app.views[state + 'View'].render();
         },
 
-        setup: function () {
+        initialize: function () {
 
             this.addState('main');
             this.listenForStateChange();
         }
     };
+
+    Global.Initable.extend(app.stateObject);
     
-})(window.app || {});
+})(window, window.app || {});
