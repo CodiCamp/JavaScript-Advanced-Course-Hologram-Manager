@@ -2,7 +2,10 @@
 (function(Global, app) {
 
     app.views.settingsView = {
-        name: 'settings'
+        name: 'settings',
+        init: function () {
+            console.log(this.name);
+        }
     };
     _.extend(app.views.settingsView, Global.GenericView);
 
