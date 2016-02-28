@@ -98,7 +98,7 @@
             server: {
 
                 options: {
-                    port: 8080,
+                    port: 8081,
                     hostname: "*",
                     base: "build/development",
                     onCreateServer: function (server, connect, options) {
@@ -123,7 +123,7 @@
                     livereload: true
                 },
                 files: ["app/less/**/*.less"],
-                tasks: ["less:development"]
+                tasks: ["less:development", "postcss:development"]
             },
 
             js: {
@@ -153,6 +153,22 @@
 
                 files: ["app/root/*.html"],
                 tasks: ["template:dev"]
+            }
+        },
+
+        postcss: {
+
+            options: {
+
+                map: true, // inline sourcemap
+
+                processors: [
+                    require("autoprefixer")({browsers: 'last 2 versions'}), // add vendor prefixes
+                    // require('cssnano')() // minify the result
+                ]
+            },
+            development: {
+                src: "build/development/styles/*.css"
             }
         },
 
@@ -215,6 +231,7 @@
      * @grunt contrib less - compiles less
      */
     grunt.loadNpmTasks("grunt-contrib-less");
+    grunt.loadNpmTasks('grunt-postcss');
     grunt.loadNpmTasks("grunt-template");
     grunt.loadNpmTasks('grunt-contrib-jst');
     grunt.loadNpmTasks("grunt-contrib-copy");
@@ -232,6 +249,7 @@
                                     "jst:dev",
                                     "copy:development",
                                     "less:development",
+                                    "postcss:development",
                                     "connect",
                                     "watch"
                                     ]);
