@@ -1,7 +1,7 @@
 // Initial
 (function(Global, app) {
 
-    app.views.mainView = _.extendOwn({
+    app.views.mainView = Global.GenericView.extend({
         name: 'main',
 
         screen: {
@@ -42,14 +42,13 @@
             //position
             this.elements.projectionArea.style.top = this.projectionAreaPositionY + 'px';
             this.elements.projectionArea.style.left = this.projectionAreaPositionX + 'px';
+        },
+
+        onRender: function() {
+            this.getElements();
+            this.updateScreenParams();
         }
 
-    }, Global.GenericView);
-
-    app.views.mainView.onRender = function() {
-        this.getElements();
-        this.updateScreenParms();
-    };
-    
+    });    
 
 })(window, window.app);
