@@ -11,11 +11,15 @@
     "grunt-contrib-clean": "^0.7.0",
     "grunt-contrib-connect": "^0.11.2",
     "grunt-contrib-copy": "^0.8.2",
+    "grunt-contrib-jst": "~0.6.0",
     "grunt-contrib-less": "^1.1.0",
     "grunt-contrib-watch": "^0.6.1",
     "grunt-html-build": "^0.5.3",
     "grunt-template": "^0.2.3",
-    "grunt-contrib-jst": "~0.6.0"
+    "opbeat-js": "^1.2.10",
+    "grunt-postcss": "~0.7.2",
+    "autoprefixer": "~6.3.3",
+    "cssnano": "~3.5.2"
   },
   "repository": {
     "type": "git",
