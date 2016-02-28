@@ -2,14 +2,11 @@
 
 (function(Global, app) {
 
-    app.views.presetsView = {
+    app.views.presetsView = Global.GenericView.extend({
         name : 'presets',
         init: function () {
         	console.log(this.name);
         }
-    };
-    app.views.presetsView = _.extend(app.views.presetsView, Global.GenericView);
-
-    app.views.presetsView.listenForInit();
+    });
     
 })(window, window.app);
