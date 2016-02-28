@@ -98,7 +98,7 @@
             server: {
 
                 options: {
-                    port: 8080,
+                    port: 8081,
                     hostname: "*",
                     base: "build/development",
                     onCreateServer: function (server, connect, options) {
