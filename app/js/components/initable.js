@@ -4,8 +4,10 @@
             Events.subscribe(document, 'app:init', this.initialize.bind(this));
         },
         extend: function(extendObj) {
-            _.extendOwn(extendObj, this);
+            extendObj = _.extendOwn({},this, extendObj);
             extendObj.listenForInit();
+
+            return extendObj;
         }
     };
 })(window);
