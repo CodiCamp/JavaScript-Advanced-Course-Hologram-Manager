@@ -1,9 +1,5 @@
 (function(Global, app) {
-
-    /**
-     * TO DO: Link to the main app namespace
-     */
-
+    
     app.stateObject = {
 
         page: null,

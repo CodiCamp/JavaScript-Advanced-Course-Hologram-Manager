@@ -15,7 +15,8 @@
             components: 'components/',
             modules: 'modules/',
             templates: 'templates/',
-            views: 'views/'
+            views: 'views/',
+            models: 'models/'
         }
     };
 
@@ -29,13 +30,15 @@
 
     //Define namespace for views
     app.views = {};
+    app.models = {};
 
     //define required files
     var files = {
         templates: ['templates.js'],
         components: ['initable.js', 'generic-view.js', 'events.js'],
         views: ['main-view.js', 'presets-view.js', 'settings-view.js'],
-        modules: ['state.js']
+        modules: ['state.js'],
+        models:['model.js','firebase.js']
     };
 
     var bootstrapApp = (function(app){

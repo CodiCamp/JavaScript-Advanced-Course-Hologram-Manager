@@ -1,7 +1,7 @@
 // Initial
 (function(Global, app) {
 
-    app.views.mainView = Global.GenericView.extend({
+    var view = app.views.mainView = Global.GenericView.extend({
         name: 'main',
 
         screen: {
@@ -13,12 +13,23 @@
             projectionArea: null
         },
 
+        uiElements: {
+            configurationButton: null,
+            closeConfigurationButton: null,
+            configurationNavigation: null
+        },
+
         init: function () {
             console.log(this.name);
         },
 
 
         getElements: function () {
+            //Configuration elements
+            this.uiElements.closeConfigurationButton = document.getElementById('close-configuration');
+            this.uiElements.configurationNavigation = document.getElementById('main-navigation');
+            this.uiElements.configurationButton = document.getElementById('call-configuration');
+            //Projection elements
             this.elements.projectionArea = document.getElementById('projection');
             // this.controls.flipImage = document.getElementById('js-flip-image');
             // this.controls.fullScreen = document.getElementById('js-full-screen');
@@ -47,6 +58,19 @@
         onRender: function() {
             this.getElements();
             this.updateScreenParams();
+            this.bindEvents();
+        },
+
+        bindEvents: function () {
+            //Call configuration modal
+            Events.subscribe(this.uiElements.configurationButton, 'click', function showConfigurationMenu () {
+                view.uiElements.configurationNavigation.classList.add('active');
+            });
+
+            //Close configuration modal
+            Events.subscribe(this.uiElements.closeConfigurationButton, 'click', function hideConfigurationMenu () {
+                view.uiElements.configurationNavigation.classList.remove('active');
+            });
         }
 
     });    
