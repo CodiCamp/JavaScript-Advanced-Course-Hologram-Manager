@@ -177,7 +177,8 @@
             dev: {
                 options: {
                     data: {
-                        scripts: ['http://localhost:35729/livereload.js',
+                        scripts: ['https://cdn.firebase.com/js/client/2.4.2/firebase.js',
+                                    'http://localhost:35729/livereload.js',
                                     'app/vendor/lab.min.js',
                                     'app/vendor/underscore.js']
                     }
