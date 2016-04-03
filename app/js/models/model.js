@@ -4,62 +4,55 @@
 
 var app = window.app || {};
 
-(function () {
+(function (global) {
+    var model = app.model = app.model || {};
 
-    app.model = {
-
-        /**
-         * Model object - keeps image properties
-         * @type {Object}
-         */
-        defaults: {
-            scaled : {
-                width :  0 ,
+    /**
+     * Model object - keeps image properties
+     * @type {Object}
+     */
+    model.defaults = {
+        scaled : {
+            width :  0 ,
                 height :  0
-            },
-            translated: {
-                x : x,
-                y : y,
-                z : z //
-            },
-            rotated : deg,
+        },
+        translated: {
+            x : 0,
+                y : 0,
+                z : 0 //
+        },
+        rotated : 0,
             fliped : {
 
-                horizontal: 0,
+            horizontal: 0,
                 vertical : 0,
 
-            },
-            moved : {
-                x : x,
-                y : y,
-                z : z
-            }
         },
-
-        /**
-         * @param  {String} key
-         * @return {Object} value
-         */
-        get: function(key) {
-
-            var value = JSON.parse(localStorage.key);
-
-            return value;
-        },
-
-        /**
-         * @param {String} key
-         * @param {Object} obj
-         */
-        set: function(key,obj) {
-
-            var  value = JSON.stringify(obj);
-            localStorage.setItem(key,value);
-
-        },
-
-        parse: function(obj) {
-
+        moved : {
+            x : 0,
+                y : 0,
+                z : 0
         }
     };
-})();
+
+    model.data = {
+        presets: [],
+        user: {
+            logged: false
+        }
+    };
+
+    /**
+     * Gets all presets by replacing the currently loaded
+     * Delegates to localStorage || Firebase
+     * @return {Void}
+     */
+    model.getAllPresets = function () {
+
+        model[model.mode].getAllPresets();
+    };
+
+    // TO DO: Implement all other methods
+
+
+})(window);
