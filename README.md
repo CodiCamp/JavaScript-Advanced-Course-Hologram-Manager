@@ -30,9 +30,9 @@ The user can choose the faces number of the hologram
 * Load Canvas / WebGL content (for phase 2)
 
 ## 4. Save / Load settings
-Save hologram profiles with settings to the device local storage.
 
-Additionally to be able to save settings and user profile to a cloud service.
+Save hologram profiles with settings if user is logged in to firebase.
+Not logged in users should fallback to localStorage.
 
 ## 5. Remote control hologram
 Remote control from another device the hologram using it's UI
