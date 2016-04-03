@@ -38,7 +38,7 @@
         components: ['initable.js', 'generic-view.js', 'events.js'],
         views: ['main-view.js', 'presets-view.js', 'settings-view.js'],
         modules: ['state.js'],
-        models:['model.js','indexedDbModel.js']
+        models:['model.js','firebase.js']
     };
 
     var bootstrapApp = (function(app){

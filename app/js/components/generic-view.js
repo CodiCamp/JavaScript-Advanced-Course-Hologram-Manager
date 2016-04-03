@@ -8,7 +8,6 @@
 
         initialize: function() {
             this.template = Templates[this.name];
-            this.placeholder = document.getElementById(this.name + '-wrapper');
 
             this.init();
         },
@@ -16,7 +15,12 @@
         onRender: function() {},
 
         render: function() {
-            this.placeholder.innerHTML = this.template();
+
+            if(!this.placeholder){
+                this.placeholder = document.getElementById(this.name + '-wrapper');
+            }
+
+            this.placeholder.innerHTML = this.template(app.model.data);
             this.onRender();
         },
 
