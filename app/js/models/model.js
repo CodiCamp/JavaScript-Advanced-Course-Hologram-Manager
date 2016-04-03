@@ -75,8 +75,6 @@ var app = window.app || {};
 
             for(var prop in obj) {
 
-
-
                 path += "." + prop;
                 localStorage.setItem(path,JSON.stringify(obj[prop]));
                 path = path.substr(0,path.lastIndexOf("."));
@@ -135,8 +133,14 @@ var app = window.app || {};
          */
         readAll : function() {
 
-            for ( var i = 0, counter = localStorage.length; i < counter; ++i ) {
-              console.log( localStorage.getItem( JSON.parse(localStorage.key( i )) ) );
+            for(var i=0, len=localStorage.length; i<len; i++) {
+                var key = localStorage.key(i);
+                var value = localStorage[key];
+                if(key.indexOf(".") < 0) {
+                    //console.log(key + " => " + value);
+                    console.log(key + ":");
+                    console.log(JSON.parse(localStorage.getItem(key)));
+                }
             }
 
         },
@@ -149,7 +153,6 @@ var app = window.app || {};
         remove: function(key) {
 
             localStorage.removeItem(key);
-            // delete global.localStorage[key];
 
         },
 
@@ -161,10 +164,6 @@ var app = window.app || {};
 
             localStorage.clear();
 
-            // for ( var i = 0, counter = localStorage.length; i < counter; ++i ) {
-            //     localStorage.removeItem( i );
-            //     delete global.localStorage.key( i );
-            // }
         },
 
         /**
