@@ -16,7 +16,7 @@
         uiElements: {
             configurationButton: null,
             closeConfigurationButton: null,
-            configurationModal: null
+            configurationNavigation: null
         },
 
         init: function () {
@@ -27,7 +27,7 @@
         getElements: function () {
             //Configuration elements
             this.uiElements.closeConfigurationButton = document.getElementById('close-configuration');
-            this.uiElements.configurationModal = document.getElementById('configuration-modal');
+            this.uiElements.configurationNavigation = document.getElementById('main-navigation');
             this.uiElements.configurationButton = document.getElementById('call-configuration');
             //Projection elements
             this.elements.projectionArea = document.getElementById('projection');
@@ -64,12 +64,12 @@
         bindEvents: function () {
             //Call configuration modal
             Events.subscribe(this.uiElements.configurationButton, 'click', function showConfigurationMenu () {
-                view.uiElements.configurationModal.classList.add('active');
+                view.uiElements.configurationNavigation.classList.add('active');
             });
 
             //Close configuration modal
             Events.subscribe(this.uiElements.closeConfigurationButton, 'click', function hideConfigurationMenu () {
-                view.uiElements.configurationModal.classList.remove('active');
+                view.uiElements.configurationNavigation.classList.remove('active');
             });
         }
 
