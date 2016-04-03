@@ -1,0 +1,16 @@
+.modal{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 0;
+  z-index: 1;
+  overflow: hidden;
+  transition: all 0.2s cubic-bezier(.450, .450, .950, .950);
+}
+.modal.active {
+  height: auto;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  transition: all 0.2s cubic-bezier(.450, .450, .950, .950);
+}

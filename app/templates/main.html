@@ -1,11 +1,6 @@
 <div class="wrapper">
     <header id="header" class="header">
-        <a href="javascript:;" class="button active">Click me</a>
-        <!-- Settings content -->
-        <div id="settings-wrapper"></div>
-        
-        <!-- Presets content -->
-        <div id="presets-wrapper"></div>
+        <a href="javascript:;" id="call-configuration" class="button pos-top-left">Configure</a>
     </header>
 
     <main id="hologram-projection">
@@ -49,4 +44,16 @@
         </div>
         
     </main>
+
+    <div id="configuration-modal" class="modal">
+        <a href="javascript:;" class="button">Settings</a>
+        <a href="javascript:;" class="button">Presets</a>
+        <a href="javascript:;" class="button" id="close-configuration">Close</a>
+
+        <!-- Settings content -->
+        <div id="settings-wrapper"></div>
+
+        <!-- Presets content -->
+        <div id="presets-wrapper"></div>
+    </div>
 </div>
