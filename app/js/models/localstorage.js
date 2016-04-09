@@ -70,7 +70,7 @@ var app = window.app || {};
          * @param {Object} obj
          * @return
          */
-        add: function(key,obj) {
+        addPreset: function(key,obj) {
 
             var path = key;
             localStorage.setItem(path,JSON.stringify(obj));
@@ -89,7 +89,7 @@ var app = window.app || {};
          * @param  {String} key
          * @return
          */
-        read: function(key) {
+        readSpecificPreset: function(key) {
 
             var item = JSON.parse(localStorage.getItem(key));
             console.log(item);
@@ -120,7 +120,7 @@ var app = window.app || {};
          * @param  {String} key
          * @return
          */
-        remove: function(key) {
+        clearStorage: function(key) {
 
             localStorage.removeItem(key);
         },
@@ -129,7 +129,7 @@ var app = window.app || {};
          * Deletes all items from local storage
          * @return
          */
-        removeAll: function() {
+        removeAllPresets: function() {
 
             localStorage.clear();
         },
@@ -139,7 +139,7 @@ var app = window.app || {};
          * @param  {String} presetsKey
          * @return
          */
-        removePresets: function(presetsKey){
+        removeSpecificPreset: function(presetsKey){
             localStorage.removeItem(presetsKey);
 
             for(var key in localStorage) {
