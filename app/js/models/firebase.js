@@ -1,6 +1,7 @@
 /**
  * Created by samuil on 03-Apr-16.
  * Firebase example usage
+ * Modified by Ani on 10-Apr-16
  */
 
 var app = window.app || {};
@@ -73,6 +74,81 @@ var app = window.app || {};
                 value.id = key;
                 model.data.presets.push(value);
             });
+        },
+
+        /**
+         * Adds preset in Firebase
+         * @param {String} key - name of the added Preset
+         * @param {Object} obj - added Preset
+         */
+        addPreset: function (key,obj) {
+
+            obj.name = key;
+            var presets = app.DB.child("presets").push(); // push() generates a unique ID for the object in DB
+            obj.path = presets.toString();
+                presets.set(obj);
+            // console.log(obj.path);
+
+
+            // var pushObj = JSON.stringify(obj);
+            // var parsedObj = JSON.parse( key + " : " + pushObj );
+            // var presets = app.DB.child("presets").set(parsedObj);
+            // var presets = app.DB.child("presets").set(parsedObj);
+            // var presets = app.DB.child("presets").set(obj);
+        },
+
+        /**
+         * Retrieves Data from DB by it's preset name
+         * @param  {String} key - name of the Preset
+         * @return {Object}
+         */
+        readSpecificPreset: function (key) {
+
+            var specificPreset = {};
+
+            app.DB.child('presets').on('value', function (snapshot){
+
+                var snapshotArr = snapshot.val();
+
+                _.each( snapshotArr , function(shot){
+
+                    if (shot.name === key) {
+                        // console.log(shot);
+                        specificPreset = shot;
+                        console.log(specificPreset);
+                    } else {}
+
+                });
+
+            });
+
+            return specificPreset;
+
+        },
+
+        /**
+         * Removes Preset by it's name
+         * @param  {String} key - name of the Preset
+         * @return void
+         */
+        removeSpecificPreset: function (key) {
+
+            var retrievedPresets = app.model.online.readSpecificPreset(key);
+            // console.log(retrievedPresets);
+
+            var ref = new Firebase(retrievedPresets.path);
+
+            ref.remove();
+        },
+
+        /**
+         * Clears all the Presets in DB
+         * @return void
+         */
+        removeAllPresets: function() {
+
+            app.DB.child('presets').remove();
         }
+
     };
 })(window, Firebase);

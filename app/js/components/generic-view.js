@@ -12,6 +12,8 @@
             this.init();
         },
 
+        init: function () {},
+
         onRender: function() {},
 
         render: function() {

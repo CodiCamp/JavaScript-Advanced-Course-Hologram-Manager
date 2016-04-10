@@ -16,9 +16,6 @@ var app = window.app || {};
          */
         get: function(key) {
 
-            // var value = JSON.parse(localStorage.key);
-            // return value;
-
             var gm = JSON.parse(localStorage.getItem(key));
             console.log(gm);
         },
@@ -29,9 +26,6 @@ var app = window.app || {};
          * @return
          */
         set: function(key,obj) {
-
-            // var  value = JSON.stringify(obj);
-            // localStorage.setItem(key,value);
 
             var m = obj;
             localStorage.setItem(key,JSON.stringify(m));
@@ -70,7 +64,7 @@ var app = window.app || {};
          * @param {Object} obj
          * @return
          */
-        add: function(key,obj) {
+        addPreset: function(key,obj) {
 
             var path = key;
             localStorage.setItem(path,JSON.stringify(obj));
@@ -89,7 +83,7 @@ var app = window.app || {};
          * @param  {String} key
          * @return
          */
-        read: function(key) {
+        readSpecificPreset: function(key) {
 
             var item = JSON.parse(localStorage.getItem(key));
             console.log(item);
@@ -116,20 +110,22 @@ var app = window.app || {};
         },
 
         /**
+         * TO DO : rename or fix
          * Deletes a specific item from local storage by its key
          * @param  {String} key
          * @return
          */
-        remove: function(key) {
+        clearStorage: function(key) {
 
             localStorage.removeItem(key);
         },
 
         /**
          * Deletes all items from local storage
+         * TO DO : clear only the presets not all things
          * @return
          */
-        removeAll: function() {
+        removeAllPresets: function() {
 
             localStorage.clear();
         },
@@ -139,7 +135,7 @@ var app = window.app || {};
          * @param  {String} presetsKey
          * @return
          */
-        removePresets: function(presetsKey){
+        removeSpecificPreset: function(presetsKey){
             localStorage.removeItem(presetsKey);
 
             for(var key in localStorage) {
