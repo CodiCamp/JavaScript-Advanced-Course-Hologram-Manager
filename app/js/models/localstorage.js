@@ -110,6 +110,7 @@ var app = window.app || {};
         },
 
         /**
+         * TO DO : rename or fix
          * Deletes a specific item from local storage by its key
          * @param  {String} key
          * @return
@@ -121,6 +122,7 @@ var app = window.app || {};
 
         /**
          * Deletes all items from local storage
+         * TO DO : clear only the presets not all things
          * @return
          */
         removeAllPresets: function() {

@@ -71,9 +71,6 @@ var app = window.app || {};
     };
 
 
-    // TO DO: Implement all other methods // done
-    // DO or Don't -> Update function ?
-
-
+    // TO DO: Update presets
 
 })(window);
