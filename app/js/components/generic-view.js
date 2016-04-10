@@ -10,8 +10,6 @@
             this.template = Templates[this.name];
 
             this.init();
-
-            this.stopListenForInit();
         },
 
         init: function () {},
