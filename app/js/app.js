@@ -60,6 +60,7 @@
                 return app.config.path[key] + module;
             }));
         });
+        
 
         $LAB.script(scriptsToLoad)
             .wait(function () {
