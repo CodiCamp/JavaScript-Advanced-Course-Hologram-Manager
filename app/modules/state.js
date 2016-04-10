@@ -45,7 +45,7 @@
 
     //initializing the default (=main) state
     Events.subscribe(document, 'app:init', function() {
-        app.stateObject.initialize.bind('STATE OBJECT: ' + app.stateObject);
+        app.stateObject.initialize.bind(app.stateObject);
         Events.unsubscribe(document, 'app:init');
     });
 
