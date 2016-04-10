@@ -73,16 +73,15 @@
             //Close configuration modal
             Events.subscribe(this.uiElements.closeConfigurationButton, 'click', function hideConfigurationMenu () {
                 view.uiElements.configurationNavigation.classList.remove('active');
+                app.stateObject.preserveState.call(app.stateObject, 'main');
             });
-
-
+            
             Array.prototype.forEach.call(states, function(state) {
                 Events.subscribe(state, 'click', function() {
                     app.stateObject.addState(state.dataset.state);
                 });
             });
         }
-
     });
 
 })(window, window.app);
