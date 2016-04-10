@@ -43,12 +43,6 @@
         }
     };
 
-    //initializing the default (=main) state
-    Events.subscribe(document, 'app:init', function() {
-        app.stateObject.initialize.bind(app.stateObject);
-        Events.unsubscribe(document, 'app:init');
-    });
-
     Global.Initable.extend(app.stateObject);
     
 })(window, window.app || {});
