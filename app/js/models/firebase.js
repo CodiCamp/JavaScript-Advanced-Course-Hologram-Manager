@@ -112,7 +112,7 @@ var app = window.app || {};
 
                 _.each( snapshotArr , function(shot){
 
-                    if (shot.name == key) {
+                    if (shot.name === key) {
                         // console.log(shot);
                         specificPreset = shot;
                         console.log(specificPreset);
