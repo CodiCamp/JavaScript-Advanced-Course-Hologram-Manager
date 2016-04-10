@@ -1,16 +1,16 @@
 (function(Global) {
     Global.Initable = {
         listenForInit: function() {
-            Events.subscribe(document, 'app:init', this.initialize.bind(this));
+            this.initialize = this.initialize.bind(this);
+            Events.subscribe(document, 'app:init', this.initialize);
         },
 
         /**
          * Removes event "app:init" with "initialize" handler for every object that extends "Initable" object.
-         *
-         * @return void
+         * @return {void}
          */
         stopListenForInit: function () {
-            Events.unsubscribe(document, 'app:init', this.initialize.bind(this));
+            Events.unsubscribe(document, 'app:init', this.initialize);
         },
 
         extend: function(extendObj) {
