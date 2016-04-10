@@ -3,6 +3,7 @@
     app.stateObject = {
 
         page: null,
+        routes: [],
 
         /**
          * [listenForStateChange description]
@@ -13,14 +14,13 @@
 
             window.addEventListener('popstate', function(event) {
                 var state = event.state.page;
-                console.log('STATE OBJECT: going back to: ' + state + ' view'); //@todo: remove
                 stateObj.addState(state);
             });
         },
 
         /**
          * Add state - equals to routing
-         * @param {Object} state
+         * @param {String} state
          * @return {Void}
          */
         addState: function(state) {
@@ -30,8 +30,7 @@
             }
 
             this.page = state;
-            history.pushState({page: state}, '', '');
-            console.log('STATE OBJECT: pushed ' + state + ' view'); //@todo: remove
+            history.pushState(this.state, '', '');
 
             app.views[state + 'View'].render();
         },

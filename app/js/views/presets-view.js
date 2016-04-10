@@ -8,7 +8,5 @@
             console.log('init', this.name);
         }
     });
-
-    
     
 })(window, window.app);

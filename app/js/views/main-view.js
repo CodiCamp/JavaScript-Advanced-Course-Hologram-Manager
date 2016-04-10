@@ -62,9 +62,6 @@
         },
 
         bindEvents: function () {
-            //get all the links marked with a 'state' data-attribute
-            var states = document.querySelectorAll('[data-state]');
-
             //Call configuration modal
             Events.subscribe(this.uiElements.configurationButton, 'click', function showConfigurationMenu () {
                 view.uiElements.configurationNavigation.classList.add('active');
@@ -74,15 +71,8 @@
             Events.subscribe(this.uiElements.closeConfigurationButton, 'click', function hideConfigurationMenu () {
                 view.uiElements.configurationNavigation.classList.remove('active');
             });
-
-
-            Array.prototype.forEach.call(states, function(state) {
-                Events.subscribe(state, 'click', function() {
-                    app.stateObject.addState(state.dataset.state);
-                });
-            });
         }
 
-    });
+    });    
 
 })(window, window.app);
