@@ -3,7 +3,6 @@
     app.stateObject = {
 
         page: null,
-        routes: [],
 
         /**
          * [listenForStateChange description]
@@ -14,13 +13,14 @@
 
             window.addEventListener('popstate', function(event) {
                 var state = event.state.page;
+                console.log('STATE OBJECT: going back to: ' + state + ' view'); //@todo: remove
                 stateObj.addState(state);
             });
         },
 
         /**
          * Add state - equals to routing
-         * @param {String} state
+         * @param {Object} state
          * @return {Void}
          */
         addState: function(state) {
@@ -30,7 +30,8 @@
             }
 
             this.page = state;
-            history.pushState(this.state, '', '');
+            history.pushState({page: state}, '', '');
+            console.log('STATE OBJECT: pushed ' + state + ' view'); //@todo: remove
 
             app.views[state + 'View'].render();
         },
@@ -41,6 +42,12 @@
             this.listenForStateChange();
         }
     };
+
+    //initializing the default (=main) state
+    Events.subscribe(document, 'app:init', function() {
+        app.stateObject.initialize.bind('STATE OBJECT: ' + app.stateObject);
+        Events.unsubscribe(document, 'app:init');
+    });
 
     Global.Initable.extend(app.stateObject);
     
