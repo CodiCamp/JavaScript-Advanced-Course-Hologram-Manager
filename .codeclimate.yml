@@ -18,6 +18,8 @@ engines:
         enabled: false
       wrap-iife:
         enabled: false
+    exclude_fingerprints:
+      - f9d76cf12e1bd7a700a2f82299e6004e
   fixme:
     enabled: false
 ratings:
