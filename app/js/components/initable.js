@@ -18,7 +18,7 @@
         },
 
         extend: function(extendObj) {
-            extendObj = _.extendOwn({},this, extendObj);
+            extendObj = _.extendOwn({}, this, extendObj);
             extendObj.listenForInit();
 
             return extendObj;
