@@ -12,6 +12,7 @@ var app = window.app || {};
      * @type {Object}
      */
     model.defaults = {
+        name: 'Default',
         scaled : {
             width :  0 ,
             height :  0
@@ -50,9 +51,9 @@ var app = window.app || {};
         model[model.mode].getAllPresets();
     };
 
-    model.addPreset = function (presetsKey,presetObject) {
+    model.addPreset = function (presetObject) {
 
-        model[model.mode].addPreset(presetsKey,presetObject);
+        model[model.mode].addPreset(presetObject);
     };
 
     model.readSpecificPreset = function (presetsKey) {
@@ -71,9 +72,6 @@ var app = window.app || {};
     };
 
 
-    // TO DO: Implement all other methods // done
-    // DO or Don't -> Update function ?
-
-
+    // TO DO: Update presets
 
 })(window);
