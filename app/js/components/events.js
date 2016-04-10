@@ -50,9 +50,9 @@ var Events = {
      * @param {Dom Object} el
      * @param {String} eventName
      * @param {Function} handler
-     * returns void
+     * @return void
      */
-    unsubscribe: function (el,eventName,handler) {
-        el.removeEventListener(eventName,handler,false);
+    unsubscribe: function (el, eventName, handler) {
+        el.removeEventListener(eventName, handler, false);
     }
 };
