@@ -22,11 +22,9 @@ var app = window.app || {};
             z : 0
         },
         rotated : 0,
-            fliped : {
-
+        fliped : {
             horizontal: 0,
-            vertical : 0,
-
+            vertical : 0
         },
         moved : {
             x : 0,

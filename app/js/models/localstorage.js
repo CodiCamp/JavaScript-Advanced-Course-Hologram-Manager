@@ -16,9 +16,6 @@ var app = window.app || {};
          */
         get: function(key) {
 
-            // var value = JSON.parse(localStorage.key);
-            // return value;
-
             var gm = JSON.parse(localStorage.getItem(key));
             console.log(gm);
         },
@@ -29,9 +26,6 @@ var app = window.app || {};
          * @return
          */
         set: function(key,obj) {
-
-            // var  value = JSON.stringify(obj);
-            // localStorage.setItem(key,value);
 
             var m = obj;
             localStorage.setItem(key,JSON.stringify(m));

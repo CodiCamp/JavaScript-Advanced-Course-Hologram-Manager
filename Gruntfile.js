@@ -163,7 +163,7 @@
                 map: true, // inline sourcemap
 
                 processors: [
-                    require("autoprefixer")({browsers: 'last 2 versions'}), // add vendor prefixes
+                    require("autoprefixer")({browsers: 'last 2 versions'}) // add vendor prefixes
                     // require('cssnano')() // minify the result
                 ]
             },
