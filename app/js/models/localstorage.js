@@ -57,10 +57,7 @@ var app = window.app || {};
                     var subObj = obj[prop];
                     var currentPath = path + "." + prop;
                     this.parse(currentPath,subObj);
-
-                }
-
-                else {
+                } else {
                     continue;
                 }
 
