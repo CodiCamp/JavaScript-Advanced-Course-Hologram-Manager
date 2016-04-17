@@ -92,10 +92,6 @@ var app = window.app || {};
         });
     }
 
-
-    // TO DO: Authenticate users with email/password combination
-    // TO DO: Authenticate users with via popular OAuth providers
-
     /**
      * Holds interactions with firebase
      * @type {Object}
@@ -108,28 +104,13 @@ var app = window.app || {};
          * data.password
          * @return {Void}
          */
-        authentiate: function authenticateWithEmailAndPassword (data) {
+        authenticate: function authenticateWithEmailAndPassword (data) {
 
             DB.authWithPassword({
                email: data.email,
                password: data.password
             }, authHandler);
-        }
-    };
-
-    // Authenticate users with a custom authentication token
-    //DB.authWithCustomToken("<token>", authHandler);
-
-    // Or with an email/password combination
-    //DB.authWithPassword({
-    //    email    : 'bobtony@firebase.com',
-    //    password : 'correcthorsebatterystaple'
-    //}, authHandler);
-    // Or via popular OAuth providers ("facebook", "github", "google", or "twitter")
-    //DB.authWithOAuthPopup("<provider>", authHandler);
-    //DB.authWithOAuthRedirect("<provider>", authHandler);
-
-    model.online = {
+        },
 
         /**
          * Sets presets list in model.data
