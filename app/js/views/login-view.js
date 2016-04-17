@@ -60,22 +60,29 @@
         /**
          * Get fields vaues and pass then to the model
          */
-        authenticate: function () {
-            console.log(this.elements.emailField.value, this.elements.passwordField.value);
+        authenticate: function (evnt) {
+
+            evnt.preventDefault();
+
+            // TO DO: validate fields
+            app.model.authenticate({
+                email: this.elements.emailField.value,
+                password: this.elements.passwordField.value
+            });
         },
 
         /**
          * Switch to local storage model
          */
-        continueLocal: function () {
-
+        continueLocal: function (evnt) {
+            evnt.preventDefault();
         },
 
         /**
          * Send password recovery mail
          */
-        recoverPassword: function () {
-
+        recoverPassword: function (evnt) {
+            evnt.preventDefault();
         },
 
         /**

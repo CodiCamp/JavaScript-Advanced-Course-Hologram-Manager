@@ -29,6 +29,14 @@ var app = window.app || {};
         }
     }
 
+    function registerHandler (error) {
+        if(!error) {
+
+        } else {
+
+        }
+    }
+
     /**
      * Get initial data from firebase
      * @retun {Void}
@@ -106,10 +114,24 @@ var app = window.app || {};
          */
         authenticate: function authenticateWithEmailAndPassword (data) {
 
-            DB.authWithPassword({
+            app.DB.authWithPassword({
                email: data.email,
                password: data.password
             }, authHandler);
+        },
+
+        /**
+         * @param {Object} data
+         * data.email
+         * data.password
+         * @return {Void}
+         */
+        registerUser: function registerNewUser (data) {
+
+            app.DB.createUser({
+               email: data.email,
+               password: data.password
+            }, registerHandler);
         },
 
         fbAuthenticate: fbAuthenticate,
