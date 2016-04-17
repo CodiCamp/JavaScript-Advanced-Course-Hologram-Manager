@@ -1,6 +1,23 @@
 @charset "utf-8";
 .view-wrapper {
-    position: absolute;
-    width: calc(~"100% - 300px");
-    right: 0;
+  position: absolute;
+  width: calc(~"100% - 300px");
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  right: 0;
+}
+
+.centered {
+  flex: none;
+}
+
+.view-style {
+  background-color: #000;
+}
+
+.form-group {
+  display: block;
+  padding-bottom: 1em;
 }
