@@ -10,7 +10,8 @@
         },
 
         elements: {
-            projectionArea: null
+            projectionArea: null,
+            viewArea: document.getElementById('view-area')
         },
 
         uiElements: {
