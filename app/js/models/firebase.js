@@ -24,7 +24,7 @@ var app = window.app || {};
         } else {
             model.mode = 'online';
             console.log("Authenticated successfully with payload:", authData);
-            // TO DO: set authentication useful data in user model
+            model.data.user = authData;
             watchData();
         }
     }
@@ -43,7 +43,7 @@ var app = window.app || {};
 
     // Alternatively, authenticate users anonymously
     // TO DO: Move authentication to login screen
-    app.DB.authAnonymously(authHandler);
+    // app.DB.authAnonymously(authHandler);
 
 
     /**
@@ -95,6 +95,27 @@ var app = window.app || {};
 
     // TO DO: Authenticate users with email/password combination
     // TO DO: Authenticate users with via popular OAuth providers
+
+    /**
+     * Holds interactions with firebase
+     * @type {Object}
+     */
+    model.online = {
+
+        /**
+         * @param {Object} data
+         * data.email
+         * data.password
+         * @return {Void}
+         */
+        authentiate: function authenticateWithEmailAndPassword (data) {
+
+            DB.authWithPassword({
+               email: data.email,
+               password: data.password
+            }, authHandler);
+        }
+    };
 
     // Authenticate users with a custom authentication token
     //DB.authWithCustomToken("<token>", authHandler);
