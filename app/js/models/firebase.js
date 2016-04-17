@@ -10,7 +10,7 @@ var app = window.app || {};
 
     var model = app.model = app.model || {};
 
-    app.DB = new Firebase("https://radiant-fire-7275.firebaseio.com");
+    app.DB = new Firebase("https://hologram-manager.firebaseio.com");
 
     // Create a callback to handle the result of the authentication
     function authHandler(error, authData) {
@@ -111,6 +111,9 @@ var app = window.app || {};
                password: data.password
             }, authHandler);
         },
+
+        fbAuthenticate: fbAuthenticate,
+        ghAuthenticate: ghAuthenticate,
 
         /**
          * Sets presets list in model.data
