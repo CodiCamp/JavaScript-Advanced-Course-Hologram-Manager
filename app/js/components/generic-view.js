@@ -8,7 +8,7 @@
 
         initialize: function() {
             this.template = Templates[this.name];
-
+            this.rendered = false;
             this.init();
         },
 
@@ -18,16 +18,31 @@
 
         render: function() {
 
-            if(!this.placeholder){
-                this.placeholder = document.getElementById(this.name + '-wrapper');
-            }
+            /**
+             * Prevent re-rendering of rendered views
+             */
+            if(!this.rendered) {
 
-            this.placeholder.innerHTML = this.template(app.model.data);
-            this.onRender();
+                if(!this.placeholder){
+                    this.placeholder = document.getElementById(this.name + '-wrapper');
+                }
+
+                this.placeholder.innerHTML = this.template(app.model.data);
+                this.rendered = true;
+                this.onRender();
+            }
         },
 
         destroy: function() {
-            console.info('Destroyed: ' + this.name);
+
+            /**
+             * Prevent destruction of persistent views
+             * persistent views must be destroyed manually
+             */
+            if(!this.persistent) {
+                this.rendered = false;
+                console.info('Destroyed: ' + this.name);
+            }
         }
     };
 

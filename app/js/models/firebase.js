@@ -24,7 +24,7 @@ var app = window.app || {};
         } else {
             model.mode = 'online';
             console.log("Authenticated successfully with payload:", authData);
-            // TO DO: set authentication useful data in user model
+            model.data.user = authData;
             watchData();
         }
     }
@@ -43,10 +43,31 @@ var app = window.app || {};
 
     // Alternatively, authenticate users anonymously
     // TO DO: Move authentication to login screen
-    app.DB.authAnonymously(authHandler);
+    // app.DB.authAnonymously(authHandler);
 
     // TO DO: Authenticate users with email/password combination
     // TO DO: Authenticate users with via popular OAuth providers
+
+    /**
+     * Holds interactions with firebase
+     * @type {Object}
+     */
+    model.online = {
+
+        /**
+         * @param {Object} data
+         * data.email
+         * data.password
+         * @return {Void}
+         */
+        authentiate: function authenticateWithEmailAndPassword (data) {
+
+            DB.authWithPassword({
+               email: data.email,
+               password: data.password
+            }, authHandler);
+        }
+    };
 
     // Authenticate users with a custom authentication token
     //DB.authWithCustomToken("<token>", authHandler);
@@ -60,59 +81,59 @@ var app = window.app || {};
     //DB.authWithOAuthPopup("<provider>", authHandler);
     //DB.authWithOAuthRedirect("<provider>", authHandler);
 
-    model.online = {
-
-        /**
-         * Sets presets list in model.data
-         * @param {Object} presetsList
-         */
-        getAllPresets: function (presetsList) {
-            //Clear previous data
-            model.data.presets = [];
-
-            _.each(presetsList, function(value, key){
-                value.id = key;
-                model.data.presets.push(value);
-            });
-        },
-
-        /**
-         * Adds preset in Firebase
-         * @param {Object} obj - added Preset
-         */
-        addPreset: function (obj) {
-            // TO DO : Add name to the default object for presets
-            var presets = app.DB.child("presets").push(obj);
-        },
-
-        /**
-         * Retrieves Data from DB by it's preset name
-         * @param  {String} key - name of the Preset
-         * @return {Object}
-         */
-        readSpecificPreset: function (key) {
-
-            return model.data.presets[key];
-        },
-
-        /**
-         * Removes Preset by it's name
-         * @param  {String} key - name of the Preset
-         * @return void
-         */
-        removeSpecificPreset: function (id) {
-
-            app.DB.child('presets').child(id).remove();
-        },
-
-        /**
-         * Clears all the Presets in DB
-         * @return void
-         */
-        removeAllPresets: function() {
-
-            app.DB.child('presets').remove();
-        }
-
-    };
+    // model.online = {
+    //
+    //     /**
+    //      * Sets presets list in model.data
+    //      * @param {Object} presetsList
+    //      */
+    //     getAllPresets: function (presetsList) {
+    //         //Clear previous data
+    //         model.data.presets = [];
+    //
+    //         _.each(presetsList, function(value, key){
+    //             value.id = key;
+    //             model.data.presets.push(value);
+    //         });
+    //     },
+    //
+    //     /**
+    //      * Adds preset in Firebase
+    //      * @param {Object} obj - added Preset
+    //      */
+    //     addPreset: function (obj) {
+    //         // TO DO : Add name to the default object for presets
+    //         var presets = app.DB.child("presets").push(obj);
+    //     },
+    //
+    //     /**
+    //      * Retrieves Data from DB by it's preset name
+    //      * @param  {String} key - name of the Preset
+    //      * @return {Object}
+    //      */
+    //     readSpecificPreset: function (key) {
+    //
+    //         return model.data.presets[key];
+    //     },
+    //
+    //     /**
+    //      * Removes Preset by it's name
+    //      * @param  {String} key - name of the Preset
+    //      * @return void
+    //      */
+    //     removeSpecificPreset: function (id) {
+    //
+    //         app.DB.child('presets').child(id).remove();
+    //     },
+    //
+    //     /**
+    //      * Clears all the Presets in DB
+    //      * @return void
+    //      */
+    //     removeAllPresets: function() {
+    //
+    //         app.DB.child('presets').remove();
+    //     }
+    //
+    // };
 })(window, Firebase);

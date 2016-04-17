@@ -5,8 +5,8 @@
         page: null,
 
         /**
-         * [listenForStateChange description]
-         * @return {Void} [description]
+         * listenForStateChange - for 'back button' functionality
+         * @return {Void}
          */
         listenForStateChange: function() {
             var stateObj = this;
@@ -20,29 +20,38 @@
 
         /**
          * Add state - equals to routing
-         * @param {Object} state
+         * @param {String} state
          * @return {Void}
          */
         addState: function(state) {
-            
             if (this.page) {
                 app.views[this.page + 'View'].destroy();
             }
 
             this.page = state;
             history.pushState({page: state}, '', '');
-            console.log('STATE OBJECT: pushed ' + state + ' view'); //@todo: remove
+            console.log('STATE OBJECT: pushed ' + this.page + ' view'); //@todo: remove
 
             app.views[state + 'View'].render();
         },
 
-        initialize: function () {
+        /**
+         * Preserve state - destroy every view except the given one
+         * @param {String} state
+         * @return {Void}
+         */
+        preserveState: function(state) {
+            if (this.page !== state) {
+                app.views[this.page + 'View'].destroy();
+            }
+        },
 
+        initialize: function() {
             this.addState('main');
             this.listenForStateChange();
         }
     };
 
-    Global.Initable.extend(app.stateObject);
-    
+    app.stateObject = Global.Initable.extend(app.stateObject);
+
 })(window, window.app || {});
