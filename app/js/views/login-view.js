@@ -38,6 +38,8 @@
 
         /**
          * Remove event listeners and markup
+         * Called manually
+         * @return {Void}
          */
         destroy: function destroyLoginView() {
             this.rendered = false;
