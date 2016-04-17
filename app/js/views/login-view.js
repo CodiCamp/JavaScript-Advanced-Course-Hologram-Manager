@@ -13,6 +13,14 @@
         init: function () {
             console.log('inited', this.name);
         },
+        
+        elements: {
+            loginBtn: null,
+            skipBtn: null,
+            recoverPasswordBtn: null,
+            emailField: null,
+            passwordField: null
+        },
 
         /**
          * When markup is ready do your stuff :)
