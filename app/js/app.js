@@ -2,7 +2,7 @@
  * Application main files
  * Task: resolve app to global name space
  */
-(function (Global) {
+(function (Global, _opbeat) {
     Global.app = Global.app || {};
 
     var states = [];
@@ -36,13 +36,18 @@
     var files = {
         templates: ['templates.js'],
         components: ['initable.js', 'generic-view.js', 'events.js'],
-        views: ['main-view.js', 'presets-view.js', 'settings-view.js'],
+        views: ['main-view.js', 'login-view.js', 'presets-view.js', 'settings-view.js'],
         modules: ['state.js'],
         models:['model.js','firebase.js']
     };
 
     var bootstrapApp = (function(app){
         var scriptsToLoad = [];
+
+        _opbeat('config', {
+           debug: true, // Toggles debug-mode - outputs debug messages to the console
+           libraryPathPattern: '(node_modules|bower_components)' // Regex pattern used to determine whether a file is a library file or not.
+        });
 
         $LAB.setGlobalDefaults({
             BasePath: app.config.path.root
@@ -55,6 +60,7 @@
                 return app.config.path[key] + module;
             }));
         });
+        
 
         $LAB.script(scriptsToLoad)
             .wait(function () {
@@ -63,4 +69,4 @@
 
     })(app);
 
-})(window);
+})(window, _opbeat);

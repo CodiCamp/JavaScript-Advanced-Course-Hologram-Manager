@@ -9,28 +9,8 @@ var app = window.app || {};
     app.model = app.model || {};
 
     app.model.local = {
-        /**
-         * @param  {String} key
-         * @return {Object} value
-         * @return
-         */
-        get: function(key) {
 
-            var gm = JSON.parse(localStorage.getItem(key));
-            console.log(gm);
-        },
-
-        /**
-         * @param {String} key
-         * @param {Object} obj
-         * @return
-         */
-        set: function(key,obj) {
-
-            var m = obj;
-            localStorage.setItem(key,JSON.stringify(m));
-
-        },
+        presetsDataKeys : [],
 
         /**
          * Help function that recursive adds objects properties to local storage
@@ -38,25 +18,25 @@ var app = window.app || {};
          * @param  {Object} obj
          * @return
          */
-        parse: function(path,obj) {
+        // parse: function(path,obj) {
 
-            for(var prop in obj) {
+        //     for(var prop in obj) {
 
-                path += "." + prop;
-                localStorage.setItem(path,JSON.stringify(obj[prop]));
-                path = path.substr(0,path.lastIndexOf("."));
+        //         path += "." + prop;
+        //         localStorage.setItem(path,JSON.stringify(obj[prop]));
+        //         path = path.substr(0,path.lastIndexOf("."));
 
-                if (typeof obj[prop] === "object") {
+        //         if (typeof obj[prop] === "object") {
 
-                    var subObj = obj[prop];
-                    var currentPath = path + "." + prop;
-                    this.parse(currentPath,subObj);
-                } else {
-                    continue;
-                }
+        //             var subObj = obj[prop];
+        //             var currentPath = path + "." + prop;
+        //             this.parse(currentPath,subObj);
+        //         } else {
+        //             continue;
+        //         }
 
-            }
-        },
+        //     }
+        // },
 
         /**
          * Adds elements to local storage
@@ -66,15 +46,17 @@ var app = window.app || {};
          */
         addPreset: function(key,obj) {
 
+            presetsDataKeys.push(key);
+
             var path = key;
             localStorage.setItem(path,JSON.stringify(obj));
 
-            if (typeof obj === "object") {
-                this.parse(path,obj);
-            }
-            else {
-                return obj;
-            }
+            // if (typeof obj === "object") {
+            //     this.parse(path,obj);
+            // }
+            // else {
+            //     return obj;
+            // }
 
         },
 
@@ -110,24 +92,16 @@ var app = window.app || {};
         },
 
         /**
-         * TO DO : rename or fix
-         * Deletes a specific item from local storage by its key
-         * @param  {String} key
-         * @return
-         */
-        clearStorage: function(key) {
-
-            localStorage.removeItem(key);
-        },
-
-        /**
          * Deletes all items from local storage
-         * TO DO : clear only the presets not all things
+         * DONE : clear only the presets not all things
          * @return
          */
         removeAllPresets: function() {
 
-            localStorage.clear();
+            // localStorage.clear();
+            for(var key in presetsDataKeys) {
+                localStorage.removeItem(key);
+            }
         },
 
         /**
@@ -136,15 +110,16 @@ var app = window.app || {};
          * @return
          */
         removeSpecificPreset: function(presetsKey){
+
             localStorage.removeItem(presetsKey);
 
-            for(var key in localStorage) {
-                if (key.startsWith(presetsKey+".")) {
-                    localStorage.removeItem(key);
-                } else {
-                    continue;
-                }
-            }
+            // for(var key in localStorage) {
+            //     if (key.startsWith(presetsKey+".")) {
+            //         localStorage.removeItem(key);
+            //     } else {
+            //         continue;
+            //     }
+            // }
         }
 
     };

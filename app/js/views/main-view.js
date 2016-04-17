@@ -10,7 +10,8 @@
         },
 
         elements: {
-            projectionArea: null
+            projectionArea: null,
+            viewArea: document.getElementById('view-area')
         },
 
         uiElements: {
@@ -73,16 +74,16 @@
             //Close configuration modal
             Events.subscribe(this.uiElements.closeConfigurationButton, 'click', function hideConfigurationMenu () {
                 view.uiElements.configurationNavigation.classList.remove('active');
+                app.stateObject.preserveState('main');
             });
 
-
+            //Add states to the state object
             Array.prototype.forEach.call(states, function(state) {
                 Events.subscribe(state, 'click', function() {
                     app.stateObject.addState(state.dataset.state);
                 });
             });
         }
-
     });
 
 })(window, window.app);

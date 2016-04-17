@@ -24,7 +24,7 @@ var app = window.app || {};
         } else {
             model.mode = 'online';
             console.log("Authenticated successfully with payload:", authData);
-            // TO DO: set authentication useful data in user model
+            model.data.user = authData;
             watchData();
         }
     }
@@ -43,10 +43,79 @@ var app = window.app || {};
 
     // Alternatively, authenticate users anonymously
     // TO DO: Move authentication to login screen
-    app.DB.authAnonymously(authHandler);
+    // app.DB.authAnonymously(authHandler);
+
+
+    /**
+     * Facebook Authentication
+     * FB API : https://developers.facebook.com/apps/608905429283761/dashboard/
+     * Guide: https://www.firebase.com/docs/web/guide/login/facebook.html
+     */
+    function fbAuthenticate(){
+        app.DB.authWithOAuthPopup("facebook", function(error, authData) {
+          if (error) {
+            console.log("Login Failed!", error);
+          } else {
+            console.log("Authenticated successfully with facebook:", authData);
+          }
+        });
+    }
+
+    /**
+     * Github Authentication
+     * Github Api : https://github.com/settings/applications/335149
+     * Guide : https://www.firebase.com/docs/web/guide/login/github.html
+     *         https://developer.github.com/v3/oauth/
+     */
+    function ghAuthenticate(){
+        app.DB.authWithOAuthPopup("github", function(error, authData) {
+          if (error) {
+            console.log("Login Failed!", error);
+          } else {
+            console.log("Authenticated successfully with github:", authData);
+          }
+        });
+    }
+
+    /**
+     * Google Authentication
+     * Google Api : https://console.developers.google.com/apis/credentials?project=codicamphologram-1279&authuser=2
+     * Guide : https://www.firebase.com/docs/web/guide/login/google.html
+     */
+    function ggAuthenticate(){
+        app.DB.authWithOAuthPopup("google", function(error, authData) {
+          if (error) {
+            console.log("Login Failed!", error);
+          } else {
+            console.log("Authenticated successfully with google:", authData);
+          }
+        });
+    }
+
 
     // TO DO: Authenticate users with email/password combination
     // TO DO: Authenticate users with via popular OAuth providers
+
+    /**
+     * Holds interactions with firebase
+     * @type {Object}
+     */
+    model.online = {
+
+        /**
+         * @param {Object} data
+         * data.email
+         * data.password
+         * @return {Void}
+         */
+        authentiate: function authenticateWithEmailAndPassword (data) {
+
+            DB.authWithPassword({
+               email: data.email,
+               password: data.password
+            }, authHandler);
+        }
+    };
 
     // Authenticate users with a custom authentication token
     //DB.authWithCustomToken("<token>", authHandler);
@@ -81,7 +150,7 @@ var app = window.app || {};
          * @param {Object} obj - added Preset
          */
         addPreset: function (obj) {
-            // TO DO : Add name to the default object for presets
+            // DONE : Add name to the default object for presets
             var presets = app.DB.child("presets").push(obj);
         },
 
