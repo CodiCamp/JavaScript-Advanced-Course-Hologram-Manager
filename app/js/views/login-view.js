@@ -15,12 +15,13 @@
 
             this.authenticate = this.authenticate.bind(this);
         },
-        
+
         elements: {
             loginBtn: null,
             skipBtn: null,
             recoverPasswordBtn: null,
             emailField: null,
+            closeSubNav: null,
             passwordField: null
         },
 
@@ -40,21 +41,24 @@
             this.elements.skipBtn = this.placeholder.querySelector('#continue-local');
             this.elements.recoverPasswordBtn = this.placeholder.querySelector('#recover-password');
             this.elements.emailField = this.placeholder.querySelector('#email-field');
+            this.elements.closeSubNav = document.getElementById('close-subconfiguration');
             this.elements.passwordField = this.placeholder.querySelector('#password-field');
         },
 
         bindEvents: function () {
 
             Events.subscribe(this.elements.loginBtn, 'click', this.authenticate);
-            Events.subscribe(this.elements.skipBtn, 'click', this.continueLocal);
-            Events.subscribe(this.elements.recoverPasswordBtn, 'click', this.recoverPassword);
+            Events.subscribe(this.elements.closeSubNav, 'click', this.closeSubNavigation);
+            // Events.subscribe(this.elements.skipBtn, 'click', this.continueLocal);
+            // Events.subscribe(this.elements.recoverPasswordBtn, 'click', this.recoverPassword);
         },
 
         unbindEvents: function () {
 
             Events.unsubscribe(this.elements.loginBtn, 'click', this.authenticate);
-            Events.unsubscribe(this.elements.skipBtn, 'click', this.continueLocal);
-            Events.unsubscribe(this.elements.recoverPasswordBtn, 'click', this.recoverPassword);
+            Events.unsubscribe(this.elements.closeSubNav, 'click', this.closeSubNavigation);
+            // Events.unsubscribe(this.elements.skipBtn, 'click', this.continueLocal);
+            // Events.unsubscribe(this.elements.recoverPasswordBtn, 'click', this.recoverPassword);
         },
 
         /**
@@ -69,6 +73,14 @@
                 email: this.elements.emailField.value,
                 password: this.elements.passwordField.value
             });
+        },
+
+        /**
+         * Close login navigation
+         */
+        closeSubNavigation: function () {
+            console.log('sub nav closed - login');
+            this.parentElement.parentElement.innerHTML = '';
         },
 
         /**
@@ -95,5 +107,5 @@
             this.unbindEvents();
         }
     });
-    
+
 })(window, window.app);
