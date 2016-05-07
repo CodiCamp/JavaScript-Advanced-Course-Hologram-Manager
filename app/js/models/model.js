@@ -86,7 +86,7 @@ var app = window.app || {};
     };
 
     /**
-     * Delete al saved presets
+     * Delete all saved presets
      * @return {Void}
      */
     model.removeAllPresets = function() {
@@ -94,12 +94,16 @@ var app = window.app || {};
         model[model.mode].removeAllPresets();
     };
 
-    model.updatePreset = function() {
+    /**
+     * Updates specific preset
+     * @param {String} key
+     * @param {Object} obj
+     * @return {Void}
+     */
+    model.updatePreset = function(key,obj) {
 
-        model[model.mode].updatePreset();
+        model[model.mode].updatePreset(key,obj);
     };
-
-    // TO DO: Update presets
 
     /**
      * Authenticate user with email and password

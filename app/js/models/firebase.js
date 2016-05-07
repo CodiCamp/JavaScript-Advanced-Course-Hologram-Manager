@@ -60,12 +60,16 @@ var app = window.app || {};
      * Guide: https://www.firebase.com/docs/web/guide/login/facebook.html
      */
     function fbAuthenticate(){
+
         app.DB.authWithOAuthPopup("facebook", function(error, authData) {
           if (error) {
             console.log("Login Failed!", error);
           } else {
-            console.log("Authenticated successfully with facebook:", authData);
+            // the access token will allow us to make Open Graph API calls
+            console.log(authData.facebook.accessToken);
           }
+        }, {
+          scope: "email" // the permissions requested
         });
     }
 
@@ -82,6 +86,10 @@ var app = window.app || {};
           } else {
             console.log("Authenticated successfully with github:", authData);
           }
+        },
+        {
+          // remember: "sessionOnly",
+          scope: "user,gist"
         });
     }
 
@@ -97,6 +105,10 @@ var app = window.app || {};
           } else {
             console.log("Authenticated successfully with google:", authData);
           }
+        },
+        {
+          // remember: "sessionOnly",
+          scope: "email"
         });
     }
 
@@ -136,6 +148,7 @@ var app = window.app || {};
 
         fbAuthenticate: fbAuthenticate,
         ghAuthenticate: ghAuthenticate,
+        ggAuthenticate: ggAuthenticate,
 
         /**
          * Sets presets list in model.data
