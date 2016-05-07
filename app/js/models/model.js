@@ -98,17 +98,18 @@ var app = window.app || {};
 
     /**
      * Authenticate user with email and password
-     * @param email
-     * @param password
+     * @param {Object} data
+     *   @param {String} email
+     *   @param {String} password
      */
-    model.authenticate = function authenticateUser (email, password) {
+    model.authenticate = function authenticateUser (data) {
 
         /**
          * Current support is only online authentication
          */
         model.online.authenticate({
-            email: username,
-            password: password
+            email: data.email,
+            password: data.password
         });
     };
 

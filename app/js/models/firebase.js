@@ -10,7 +10,7 @@ var app = window.app || {};
 
     var model = app.model = app.model || {};
 
-    app.DB = new Firebase("https://radiant-fire-7275.firebaseio.com");
+    app.DB = new Firebase("https://hologram-manager.firebaseio.com");
 
     // Create a callback to handle the result of the authentication
     function authHandler(error, authData) {
@@ -26,6 +26,14 @@ var app = window.app || {};
             console.log("Authenticated successfully with payload:", authData);
             model.data.user = authData;
             watchData();
+        }
+    }
+
+    function registerHandler (error) {
+        if(!error) {
+
+        } else {
+
         }
     }
 
@@ -92,10 +100,6 @@ var app = window.app || {};
         });
     }
 
-
-    // TO DO: Authenticate users with email/password combination
-    // TO DO: Authenticate users with via popular OAuth providers
-
     /**
      * Holds interactions with firebase
      * @type {Object}
@@ -108,28 +112,30 @@ var app = window.app || {};
          * data.password
          * @return {Void}
          */
-        authentiate: function authenticateWithEmailAndPassword (data) {
+        authenticate: function authenticateWithEmailAndPassword (data) {
 
-            DB.authWithPassword({
+            app.DB.authWithPassword({
                email: data.email,
                password: data.password
             }, authHandler);
-        }
-    };
+        },
 
-    // Authenticate users with a custom authentication token
-    //DB.authWithCustomToken("<token>", authHandler);
+        /**
+         * @param {Object} data
+         * data.email
+         * data.password
+         * @return {Void}
+         */
+        registerUser: function registerNewUser (data) {
 
-    // Or with an email/password combination
-    //DB.authWithPassword({
-    //    email    : 'bobtony@firebase.com',
-    //    password : 'correcthorsebatterystaple'
-    //}, authHandler);
-    // Or via popular OAuth providers ("facebook", "github", "google", or "twitter")
-    //DB.authWithOAuthPopup("<provider>", authHandler);
-    //DB.authWithOAuthRedirect("<provider>", authHandler);
+            app.DB.createUser({
+               email: data.email,
+               password: data.password
+            }, registerHandler);
+        },
 
-    model.online = {
+        fbAuthenticate: fbAuthenticate,
+        ghAuthenticate: ghAuthenticate,
 
         /**
          * Sets presets list in model.data
