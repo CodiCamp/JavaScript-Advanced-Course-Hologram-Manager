@@ -44,7 +44,7 @@ var app = window.app || {};
     function watchData() {
 
         app.DB.child("users/"+app.model.data.user.uid+"/presets").on('value', function (snapshot){
-            model.online.getAllPresets(snapshot.val());
+            model.online.getPresetsByLogin(snapshot.val());
             app.DB.child("users/"+app.model.data.user.uid+"/presets").off('value');
         });
     }
@@ -141,13 +141,20 @@ var app = window.app || {};
          * Sets presets list in model.data
          * @param {Object} presetsList
          */
-        getAllPresets: function (presetsList) {
+        getPresetsByLogin: function (presetsList) {
             //Clear previous data
             model.data.presets = [];
 
             _.each(presetsList, function(value, key){
                 value.id = key;
                 model.data.presets.push(value);
+            });
+        },
+
+        getAllPresets: function() {
+
+            app.DB.child("users/"+app.model.data.user.uid+"/presets").on('value', function (snapshot){
+                console.log(snapshot.val());
             });
         },
 
