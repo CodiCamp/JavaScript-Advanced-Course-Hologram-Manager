@@ -120,6 +120,11 @@ var app = window.app || {};
             //         continue;
             //     }
             // }
+        },
+
+        updatePreset: function(key,properties){
+
+            localStorage.setItem(key,JSON.stringify(properties));
         }
 
     };

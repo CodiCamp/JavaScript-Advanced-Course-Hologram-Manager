@@ -43,9 +43,9 @@ var app = window.app || {};
      */
     function watchData() {
 
-        app.DB.child('presets').on('value', function (snapshot){
-            model.online.getAllPresets(snapshot.val());
-            app.DB.child('presets').off('value');
+        app.DB.child("users/"+app.model.data.user.uid+"/presets").on('value', function (snapshot){
+            model.online.getPresetsByLogin(snapshot.val());
+            app.DB.child("users/"+app.model.data.user.uid+"/presets").off('value');
         });
     }
 
@@ -60,12 +60,16 @@ var app = window.app || {};
      * Guide: https://www.firebase.com/docs/web/guide/login/facebook.html
      */
     function fbAuthenticate(){
+
         app.DB.authWithOAuthPopup("facebook", function(error, authData) {
           if (error) {
             console.log("Login Failed!", error);
           } else {
-            console.log("Authenticated successfully with facebook:", authData);
+            // the access token will allow us to make Open Graph API calls
+            console.log(authData.facebook.accessToken);
           }
+        }, {
+          scope: "email" // the permissions requested
         });
     }
 
@@ -82,6 +86,10 @@ var app = window.app || {};
           } else {
             console.log("Authenticated successfully with github:", authData);
           }
+        },
+        {
+          // remember: "sessionOnly",
+          scope: "user,gist"
         });
     }
 
@@ -97,6 +105,10 @@ var app = window.app || {};
           } else {
             console.log("Authenticated successfully with google:", authData);
           }
+        },
+        {
+          // remember: "sessionOnly",
+          scope: "email"
         });
     }
 
@@ -136,12 +148,13 @@ var app = window.app || {};
 
         fbAuthenticate: fbAuthenticate,
         ghAuthenticate: ghAuthenticate,
+        ggAuthenticate: ggAuthenticate,
 
         /**
          * Sets presets list in model.data
          * @param {Object} presetsList
          */
-        getAllPresets: function (presetsList) {
+        getPresetsByLogin: function (presetsList) {
             //Clear previous data
             model.data.presets = [];
 
@@ -151,13 +164,20 @@ var app = window.app || {};
             });
         },
 
+        getAllPresets: function() {
+
+            app.DB.child("users/"+app.model.data.user.uid+"/presets").on('value', function (snapshot){
+                console.log(snapshot.val());
+            });
+        },
+
         /**
          * Adds preset in Firebase
          * @param {Object} obj - added Preset
          */
         addPreset: function (obj) {
             // DONE : Add name to the default object for presets
-            var presets = app.DB.child("presets").push(obj);
+            app.DB.child("users/"+app.model.data.user.uid+"/presets").push(obj);
         },
 
         /**
@@ -177,7 +197,7 @@ var app = window.app || {};
          */
         removeSpecificPreset: function (id) {
 
-            app.DB.child('presets').child(id).remove();
+            app.DB.child("users/"+app.model.data.user.uid+"/presets").child(id).remove();
         },
 
         /**
@@ -186,8 +206,16 @@ var app = window.app || {};
          */
         removeAllPresets: function() {
 
-            app.DB.child('presets').remove();
-        }
+            app.DB.child("users/"+app.model.data.user.uid+"/presets").remove();
+        },
+
+        updatePreset: function(id,obj) {
+            app.DB.child("users/"+app.model.data.user.uid+"/presets").child(id).update(obj);
+        },
+
+        // updateMultiplePresets: function() {
+        //     // Still thinking about it
+        // }
 
     };
 })(window, Firebase);
