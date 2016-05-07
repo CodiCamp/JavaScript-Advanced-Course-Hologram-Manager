@@ -43,9 +43,9 @@ var app = window.app || {};
      */
     function watchData() {
 
-        app.DB.child('presets').on('value', function (snapshot){
+        app.DB.child("users/"+app.model.data.user.uid+"/presets").on('value', function (snapshot){
             model.online.getAllPresets(snapshot.val());
-            app.DB.child('presets').off('value');
+            app.DB.child("users/"+app.model.data.user.uid+"/presets").off('value');
         });
     }
 
@@ -157,7 +157,7 @@ var app = window.app || {};
          */
         addPreset: function (obj) {
             // DONE : Add name to the default object for presets
-            var presets = app.DB.child("presets").push(obj);
+            app.DB.child("users/"+app.model.data.user.uid+"/presets").push(obj);
         },
 
         /**
@@ -177,7 +177,7 @@ var app = window.app || {};
          */
         removeSpecificPreset: function (id) {
 
-            app.DB.child('presets').child(id).remove();
+            app.DB.child("users/"+app.model.data.user.uid+"/presets").child(id).remove();
         },
 
         /**
@@ -186,8 +186,16 @@ var app = window.app || {};
          */
         removeAllPresets: function() {
 
-            app.DB.child('presets').remove();
-        }
+            app.DB.child("users/"+app.model.data.user.uid+"/presets").remove();
+        },
+
+        updatePreset: function(id,obj) {
+            app.DB.child("users/"+app.model.data.user.uid+"/presets").child(id).update(obj);
+        },
+
+        // updateMultiplePresets: function() {
+        //     // Still thinking about it
+        // }
 
     };
 })(window, Firebase);

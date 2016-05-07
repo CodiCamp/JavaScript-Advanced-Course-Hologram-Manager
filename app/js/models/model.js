@@ -94,6 +94,11 @@ var app = window.app || {};
         model[model.mode].removeAllPresets();
     };
 
+    model.updatePreset = function() {
+
+        model[model.mode].updatePreset();
+    };
+
     // TO DO: Update presets
 
     /**
