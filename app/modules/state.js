@@ -13,8 +13,14 @@
 
             window.addEventListener('popstate', function(event) {
                 var state = event.state.page;
+                var prevState = app.stateObject.page;
                 console.log('STATE OBJECT: going back to: ' + state + ' view'); //@todo: remove
                 stateObj.addState(state);
+
+                if(app.views[prevState + 'View'].persistent) {
+                    app.views[prevState + 'View'].close();
+                }
+
             });
         },
 

@@ -30,8 +30,16 @@
                 this.placeholder.innerHTML = this.template(app.model.data);
                 this.rendered = true;
                 this.onRender();
+            }else {
+                this.placeholder.style.display = 'block';
+                console.info('show: not render - view ' + this.name); //@todo: remove
             }
         },
+
+        /**
+         * Close a persistent view without destroy
+         */
+        close: function () {},
 
         destroy: function() {
 
@@ -41,7 +49,7 @@
              */
             if(!this.persistent) {
                 this.rendered = false;
-                console.info('Destroyed: ' + this.name);
+                console.info('Destroyed: ' + this.name); //@todo: remove
             }
         }
     };

@@ -4,6 +4,13 @@
     var view = app.views.mainView = Global.GenericView.extend({
         name: 'main',
 
+        /**
+         * Persistent views are rendered once
+         * And must be destroyed manually
+         * In this case destroy only if login is successful
+         */
+        persistent: true,
+
         screen: {
             width: 0,
             height: 0
