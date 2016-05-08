@@ -1,11 +1,10 @@
-// Presets menu
-
+// Settings menu
 (function(Global, app) {
 
-    app.views.presetsView = Global.GenericView.extend({
-        name : 'presets',
+    app.views.editView = Global.GenericView.extend({
+        name: 'edit',
         init: function () {
-            console.log('init', this.name);
+            console.log(this.name);
         },
 
         elements: {
@@ -41,11 +40,9 @@
          * Close login navigation
          */
         closeSubNavigation: function () {
-            console.log('sub nav closed - presets');
+            console.log('sub nav closed - edit');
             this.parentElement.parentElement.innerHTML = '';
         },
     });
-
-
 
 })(window, window.app);
