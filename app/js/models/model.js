@@ -22,7 +22,11 @@ var app = window.app || {};
             y : 0,
             z : 0
         },
-        rotated : 0,
+        rotated : {
+            x : 0,
+            y : 0,
+            z : 0
+        },
         fliped : {
             horizontal: 0,
             vertical : 0
@@ -82,7 +86,7 @@ var app = window.app || {};
     };
 
     /**
-     * Delete al saved presets
+     * Delete all saved presets
      * @return {Void}
      */
     model.removeAllPresets = function() {
@@ -90,21 +94,31 @@ var app = window.app || {};
         model[model.mode].removeAllPresets();
     };
 
-    // TO DO: Update presets
+    /**
+     * Updates specific preset
+     * @param {String} key
+     * @param {Object} obj
+     * @return {Void}
+     */
+    model.updatePreset = function(key,obj) {
+
+        model[model.mode].updatePreset(key,obj);
+    };
 
     /**
      * Authenticate user with email and password
-     * @param email
-     * @param password
+     * @param {Object} data
+     *   @param {String} email
+     *   @param {String} password
      */
-    model.authenticate = function authenticateUser (email, password) {
+    model.authenticate = function authenticateUser (data) {
 
         /**
          * Current support is only online authentication
          */
         model.online.authenticate({
-            email: username,
-            password: password
+            email: data.email,
+            password: data.password
         });
     };
 

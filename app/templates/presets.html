@@ -1,7 +1,24 @@
-<div id="preset" class="">
+<div id="preset" class="presets-container">
 
     <% _.each(presets , function(preset){ %>
         <div> <%= preset.name %></div>
     <% }) %>
 
+    <a href="javascript:;" class="close-subnavigation" id="close-subconfiguration"></a>
+    <h2 class="nav-title">Presets</h2>
+    <div class="preset">
+        <h3 class="preset-name">Preset 1
+            <a href="javascript:;" class="preset-delete"></a>
+        </h3>
+    </div>
+    <div class="preset">
+        <h3 class="preset-name">Preset 2
+            <a href="javascript:;" class="preset-delete"></a>
+        </h3>
+    </div>
+    <div class="preset">
+        <h3 class="preset-name">Preset 3
+            <a href="javascript:;" class="preset-delete"></a>
+        </h3>
+    </div>
 </div>

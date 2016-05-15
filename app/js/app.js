@@ -36,9 +36,9 @@
     var files = {
         templates: ['templates.js'],
         components: ['initable.js', 'generic-view.js', 'events.js'],
-        views: ['main-view.js', 'login-view.js', 'presets-view.js', 'settings-view.js'],
+        views: ['main-view.js', 'login-view.js', 'presets-view.js', 'settings-view.js', 'edit-view.js'],
         modules: ['state.js'],
-        models:['model.js','firebase.js']
+        models:['model.js','firebase.js','localstorage.js']
     };
 
     var bootstrapApp = (function(app){
@@ -60,7 +60,7 @@
                 return app.config.path[key] + module;
             }));
         });
-        
+
 
         $LAB.script(scriptsToLoad)
             .wait(function () {
