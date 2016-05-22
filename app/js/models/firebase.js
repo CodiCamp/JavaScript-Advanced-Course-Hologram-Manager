@@ -12,6 +12,16 @@ var app = window.app || {};
 
     app.DB = new Firebase("https://hologram-manager.firebaseio.com");
 
+    var oAuthPermissions = {
+
+        facebook : 'email',
+
+        google : 'email',
+
+        github : 'user:email'
+
+    }
+
     // Create a callback to handle the result of the authentication
     function authHandler(error, authData) {
         if (error) {
@@ -53,34 +63,13 @@ var app = window.app || {};
     // TO DO: Move authentication to login screen
     // app.DB.authAnonymously(authHandler);
 
-
     /**
-     * Facebook Authentication
-     * FB API : https://developers.facebook.com/apps/608905429283761/dashboard/
-     * Guide: https://www.firebase.com/docs/web/guide/login/facebook.html
+     * Social Authentication
+     * @param {String} oAuthString - facebook , google , github
      */
-    function fbAuthenticate(){
+    function oAuthenticate(oAuthString){
 
-        app.DB.authWithOAuthPopup("facebook", function(error, authData) {
-          if (error) {
-            console.log("Login Failed!", error);
-          } else {
-            // the access token will allow us to make Open Graph API calls
-            console.log(authData.facebook.accessToken);
-          }
-        }, {
-          scope: "email" // the permissions requested
-        });
-    }
-
-    /**
-     * Github Authentication
-     * Github Api : https://github.com/settings/applications/335149
-     * Guide : https://www.firebase.com/docs/web/guide/login/github.html
-     *         https://developer.github.com/v3/oauth/
-     */
-    function ghAuthenticate(){
-        app.DB.authWithOAuthPopup("github", function(error, authData) {
+        app.DB.authWithOAuthPopup(oAuthString, function(error, authData) {
           if (error) {
             console.log("Login Failed!", error);
           } else {
@@ -89,27 +78,9 @@ var app = window.app || {};
         },
         {
           // remember: "sessionOnly",
-          scope: "user:email"
+          scope: oAuthPermissions[oAuthString]
         });
-    }
 
-    /**
-     * Google Authentication
-     * Google Api : https://console.developers.google.com/apis/credentials?project=codicamphologram-1279&authuser=2
-     * Guide : https://www.firebase.com/docs/web/guide/login/google.html
-     */
-    function ggAuthenticate(){
-        app.DB.authWithOAuthPopup("google", function(error, authData) {
-          if (error) {
-            console.log("Login Failed!", error);
-          } else {
-            console.log("Authenticated successfully with google:", authData);
-          }
-        },
-        {
-          // remember: "sessionOnly",
-          scope: "email"
-        });
     }
 
     /**
@@ -146,9 +117,8 @@ var app = window.app || {};
             }, registerHandler);
         },
 
-        fbAuthenticate: fbAuthenticate,
-        ghAuthenticate: ghAuthenticate,
-        ggAuthenticate: ggAuthenticate,
+        oAuthenticate : oAuthenticate,
+
 
         /**
          * Sets presets list in model.data
