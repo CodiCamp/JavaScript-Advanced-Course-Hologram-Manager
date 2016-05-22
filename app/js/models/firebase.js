@@ -89,7 +89,7 @@ var app = window.app || {};
         },
         {
           // remember: "sessionOnly",
-          scope: "user,gist"
+          scope: "user:email"
         });
     }
 
