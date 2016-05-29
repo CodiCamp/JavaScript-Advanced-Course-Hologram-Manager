@@ -4,13 +4,32 @@
     <h2 class="nav-title">Edit</h2>
 
     <div class="demo-container flex-parent">
-        <div id="preview" class="flex-child">
+        <div id="preview" class="flex-child right-margin">
             <div class="triangle-wrapper">
                 <div class="triangle-up">
                 </div>
             </div>
-            
+
             <div class="triangle-base"></div>
+
+            <div class="align-bottom">
+                <div class="flex-parent sp-bt save-changes">
+                    <div class="flex-parent sp-bt flex-child right-margin">
+                        <input type="text" form="transformations" placeholder="New Preset Name" class="flex-child right-margin">
+                        <button form="transformations" class="button inverse flex-child">Save Preset</button>
+                    </div>
+
+                    <div class="flex-parent sp-bt flex-child right-margin">
+                        <input type="text" form="transformations" placeholder="New Scene Name" class="flex-child right-margin">
+                        <button form="transformations" class="button inverse flex-child">Save Scene</button>
+                    </div>
+                </div>
+
+                <div class="flex-parent sp-bt">
+                    <button form="transformations" class="button inverse big flex-child right-margin">Apply</button>
+                    <button form="transformations" class="button big flex-child">Reset</button>
+                </div>
+            </div>
         </div>
 
         <form action="" id="transformations" class="flex-child">
@@ -53,12 +72,18 @@
                 </div>
             </fieldset>
             
-            <fieldset id="upload">
-                <input type="text">
+            <fieldset id="media" class="action-row">
+                <legend class="action-name">Media</legend>
 
-                <div class="upload-wrapper">
-                    <a href="javascript:;" class="upload-btn veil">Upload</a>
-                    <input type="file" class="upload-btn real">
+                <div class="flex-parent sp-bt">
+                    <input type="text" class="flex-child" placeholder="url">
+
+                    <div class="divider-text flex-child">or</div>
+
+                    <div class="upload-btn-wrapper flex-child">
+                        <a href="javascript:;" class="button inverse upload-btn veil">Upload</a>
+                        <input type="file" class="upload-btn real">
+                    </div>
                 </div>
 
             </fieldset>
