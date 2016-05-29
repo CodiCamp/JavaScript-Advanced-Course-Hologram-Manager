@@ -42,7 +42,7 @@
         close: function () {},
 
         destroy: function() {
-
+    
             /**
              * Prevent destruction of persistent views
              * persistent views must be destroyed manually
