@@ -9,6 +9,7 @@
                 <div class="triangle-up">
                 </div>
             </div>
+            
             <div class="triangle-base"></div>
         </div>
 
@@ -16,7 +17,7 @@
             <fieldset id="move" class="action-row">
                 <legend class="action-name">Move</legend>
 
-                <div class="flex-parent">
+                <div class="flex-parent sp-bt">
                     <input type="text" placeholder="x" class="flex-child">
                     <input type="text" placeholder="y" class="flex-child">
                     <input type="text" placeholder="z" class="flex-child">
@@ -26,7 +27,7 @@
             <fieldset id="rotate" class="action-row">
                 <legend class="action-name">Rotate</legend>
 
-                <div class="flex-parent">
+                <div class="flex-parent sp-bt">
                     <input type="text" placeholder="x" class="flex-child">
                     <input type="text" placeholder="y" class="flex-child">
                     <input type="text" placeholder="z" class="flex-child">
@@ -36,11 +37,30 @@
             <fieldset id="scale" class="action-row">
                 <legend class="action-name">Scale</legend>
 
-                <div class="flex-parent">
+                <div class="flex-parent sp-bt">
                     <input type="text" placeholder="x" class="flex-child">
                     <input type="text" placeholder="y" class="flex-child">
                     <input type="text" placeholder="z" class="flex-child">
                 </div>
+            </fieldset>
+
+            <fieldset id="flip" class="action-row">
+                <legend class="action-name">Flip</legend>
+
+                <div class="flex-parent cn">
+                    <a href="javascript:;">horizontal</a>
+                    <a href="javascript:;">vertical</a>
+                </div>
+            </fieldset>
+            
+            <fieldset id="upload">
+                <input type="text">
+
+                <div class="upload-wrapper">
+                    <a href="javascript:;" class="upload-btn veil">Upload</a>
+                    <input type="file" class="upload-btn real">
+                </div>
+
             </fieldset>
         </form>
     </div>

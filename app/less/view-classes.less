@@ -22,7 +22,7 @@
 form {
     font-family: sans-serif;
 }
-input {
+input:not([type=file]) {
     height: 47px;
     width: 100%;
     padding: 0 20px;
@@ -116,12 +116,14 @@ input {
 .preset {
     margin-bottom: 10px;
 }
+
 .edit-container {
     width: 100%;
 }
 
 .action-name {
     color: @default-color;
+    padding-bottom: 0.2em;
     text-align: center;
     font-size:  40px;
     font-weight:  bold;
@@ -130,12 +132,41 @@ input {
 .action-row {
     padding-bottom: 3em;
 }
+
 .flex-parent {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    &.sp-bt {
+        justify-content: space-between;
+    }
+    &.sp-ar {
+        justify-content: space-around;
+    }
+    &.cn {
+        justify-content: center;
+    }
 }
 
 .flex-child {
     flex-grow: 1;
+}
+
+.upload-wrapper {
+    position: relative;
+    padding: 1em;
+    text-align: center;
+}
+
+.upload-btn {
+    position: absolute;
+    display: inline-block;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: @default-color;
+    color: #000;
+    &.real {
+        opacity: 0;
+        z-index: 1;
+    }
 }
