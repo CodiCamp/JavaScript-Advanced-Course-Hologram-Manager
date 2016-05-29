@@ -1,5 +1,5 @@
 (function(Global, app) {
-    
+
     app.stateObject = {
 
         page: null,
