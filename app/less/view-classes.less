@@ -1,26 +1,5 @@
 @charset "utf-8";
-// .view-wrapper {
-//   position: absolute;
-//   width: calc(~"100% - 300px");
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   height: 100%;
-//   right: 0;
-// }
-
-// .centered {
-//   flex: none;
-// }
-
-// .view-style {
-//   background-color: #000;
-// }
-
-// .form-group {
-//   display: block;
-//   padding-bottom: 1em;
-// }
+@default-color: #467EB7;
 
 .view-wrapper {
     position: absolute;
@@ -40,37 +19,40 @@
     padding: 80px 60px 0;
     background-color: #000;
 }
-.login-input {
+form {
+    font-family: sans-serif;
+}
+input {
     height: 47px;
     width: 100%;
     padding: 0 20px;
     text-transform: lowercase;
     font-size: 25px;
     line-height: 47px;
-    color: #467EB7;
-    border: 1px solid #467EB7;
+    color: @default-color;
+    border: 1px solid @default-color;
     background-color: #000;
     text-align: center;
 
     &::-webkit-input-placeholder {
-        color: #467EB7;
+        color: @default-color;
     }
 
     &:-moz-placeholder { /* Firefox 18- */
-        color: #467EB7;
+        color: @default-color;
     }
 
     &::-moz-placeholder {  /* Firefox 19+ */
-        color: #467EB7;
+        color: @default-color;
     }
 
     &:-ms-input-placeholder {
-        color: #467EB7;
+        color: @default-color;
     }
 }
 .nav-title {
     text-transform: uppercase;
-    color: #467EB7;
+    color: @default-color;
     font-size: 35px;
     padding-bottom:60px;
     text-align: center;
@@ -82,8 +64,8 @@
     text-transform: uppercase;
     font-size: 25px;
     line-height: 70px;
-    color: #467EB7;
-    border: 1px solid #467EB7;
+    color: @default-color;
+    border: 1px solid @default-color;
     background-color: #000;
     text-align: center;
     font-family: sans-serif;
@@ -105,7 +87,7 @@
             content: '';
             width: 5px;
             height: 30px;
-            background-color: #467EB7;
+            background-color: @default-color;
             position: absolute;
             right: 13px;
         }
@@ -119,7 +101,7 @@
     }
 
     &:active {
-        background-color: #467EB7;
+        background-color: @default-color;
         color: #000;
 
         .preset-delete {
@@ -136,4 +118,24 @@
 }
 .edit-container {
     width: 100%;
+}
+
+.action-name {
+    color: @default-color;
+    text-align: center;
+    font-size:  40px;
+    font-weight:  bold;
+}
+
+.action-row {
+    padding-bottom: 3em;
+}
+.flex-parent {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.flex-child {
+    flex-grow: 1;
 }
