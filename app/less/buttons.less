@@ -4,16 +4,63 @@
   left: 50px;
 }
 
+//.button {
+//  display: inline-block;
+//  z-index: 1;
+//  background: #fff;
+//  border-radius: 3px;
+//  text-decoration: none;
+//  color: #336699;
+//  font-weight: bold;
+//  padding: 20px;
+//  transition: all 0.3s cubic-bezier(.450, .450, .950, .950);
+//  font-size: 16px;
+//  text-transform: uppercase;
+//}
+
 .button {
-  display: inline-block;
   z-index: 1;
-  background: #fff;
-  border-radius: 3px;
-  text-decoration: none;
-  color: #336699;
-  font-weight: bold;
-  padding: 20px;
+  background-color: #000;
+  color: @mainFontColor;
+  border: 1px solid @mainFontColor;
+  box-sizing: border-box;
   transition: all 0.3s cubic-bezier(.450, .450, .950, .950);
-  font-size: 16px;
+  height: 47px;
+  padding: 5px 0;
   text-transform: uppercase;
+  font-size: 1.5em;
+  font-weight: bold;
+  &.inverse {
+    background-color: @mainFontColor;
+    color: #000;
+  }
+  &.big {
+    height: 70px;
+    font-size: 3em;
+  }
+}
+
+.upload-btn-wrapper {
+  position: relative;
+  text-transform: uppercase;
+  padding: 1em;
+  text-align: center;
+}
+
+.upload-btn {
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  height: 47px;
+  padding: 5px 0;
+  width: 100%;
+  &.real {
+    cursor: pointer;
+    opacity: 0;
+    z-index: 1;
+  }
+  &.veil {
+    font-weight: bold;
+  }
 }
