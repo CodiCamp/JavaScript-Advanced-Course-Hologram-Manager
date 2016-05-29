@@ -35,6 +35,10 @@
 
         getElements: function () {
 
+            this.elements.fbAuthenticate = document.querySelector('[data-method="facebook"]');
+            this.elements.ggAuthenticate = document.querySelector('[data-method="google"]');
+            this.elements.ghAuthenticate = document.querySelector('[data-method="github"]');
+
             this.elements.loginBtn = this.placeholder.querySelector('#initiate-authentication');
             this.elements.skipBtn = this.placeholder.querySelector('#continue-local');
             this.elements.recoverPasswordBtn = this.placeholder.querySelector('#recover-password');
@@ -45,8 +49,14 @@
         },
 
         bindEvents: function () {
+            var fbButton = this.elements.fbAuthenticate;
+            var ggButton = this.elements.ggAuthenticate;
+            var ghButton = this.elements.ghAuthenticate;
 
             Events.subscribe(this.elements.loginBtn, 'click', this.authenticate);
+            Events.subscribe(fbButton, 'click', app.model.online.oAuthenticate);
+            Events.subscribe(ggButton, 'click', app.model.online.oAuthenticate);
+            Events.subscribe(ghButton, 'click', app.model.online.oAuthenticate);
             Events.subscribe(this.elements.closeSubNav, 'click', this.closeFromUi);
 
             //Add states to the state object
@@ -63,6 +73,9 @@
         unbindEvents: function () {
 
             Events.unsubscribe(this.elements.loginBtn, 'click', this.authenticate);
+            Events.unsubscribe(this.elements.fbAuthenticate, 'click', app.model.online.oAuthenticate('facebook'));
+            Events.unsubscribe(this.elements.ggAuthenticate, 'click', app.model.online.oAuthenticate('google'));
+            Events.unsubscribe(this.elements.ghAuthenticate, 'click', app.model.online.oAuthenticate('github'));
             Events.unsubscribe(this.elements.closeSubNav, 'click', this.closeFromUi);
 
             // Events.unsubscribe(this.elements.skipBtn, 'click', this.continueLocal);
@@ -70,7 +83,7 @@
         },
 
         /**
-         * Get fields vaues and pass then to the model
+         * Get fields values and pass then to the model
          */
         authenticate: function (evnt) {
 
