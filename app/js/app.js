@@ -36,7 +36,7 @@
     var files = {
         templates: ['templates.js'],
         components: ['initable.js', 'generic-view.js', 'events.js'],
-        views: ['main-view.js', 'login-view.js', 'presets-view.js', 'settings-view.js', 'edit-view.js'],
+        views: ['main-view.js', 'login-view.js','register-view.js', 'presets-view.js', 'settings-view.js', 'edit-view.js'],
         modules: ['state.js'],
         models:['model.js','firebase.js','localstorage.js']
     };
