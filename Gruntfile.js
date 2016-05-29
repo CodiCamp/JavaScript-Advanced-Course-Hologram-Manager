@@ -60,7 +60,8 @@
                 files: [
                     {expand: true, src: "app/images/**", dest: "build/development"},
                     {expand: true, cwd: "app/js", src: ["**"], dest: "build/development/app"},
-                    {expand: true, src: "app/modules/**", dest: "build/development"}
+                    {expand: true, src: "app/modules/**", dest: "build/development"},
+                    {expand: true, src: "app/fontello/**", dest: "build/development"}
 
                 ]
             },

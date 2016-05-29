@@ -67,7 +67,8 @@ var app = window.app || {};
      * Social Authentication
      * @param {String} oAuthString - facebook , google , github
      */
-    function oAuthenticate(oAuthString){
+    function oAuthenticate(){
+        var oAuthString = this.dataset.method;
 
         app.DB.authWithOAuthPopup(oAuthString, function(error, authData) {
           if (error) {
