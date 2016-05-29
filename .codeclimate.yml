@@ -1,7 +1,7 @@
 ---
 engines:
   duplication:
-    enabled: true
+    enabled: false
     config:
       languages:
       - javascript
@@ -38,3 +38,4 @@ exclude_paths:
   - app/js/vendor/**/*
   - "app/js/components/ajaxRequest.js"
   - hologram-UI/**/*
+- "client-server-communication%2Fremote.js"
