@@ -1,5 +1,4 @@
 @charset "utf-8";
-@default-color: #467EB7;
 
 .view-wrapper {
     position: absolute;
@@ -16,47 +15,44 @@
     bottom: 0;
     z-index: 2;
     width: 450px;
-    padding: 80px 60px 0;
+    padding: 40px 60px 0;
     background-color: #000;
 }
-form {
-    font-family: sans-serif;
-}
-input {
+
+input:not([type=file]) {
     height: 47px;
     width: 100%;
     padding: 0 20px;
     text-transform: lowercase;
     font-size: 25px;
     line-height: 47px;
-    color: @default-color;
-    border: 1px solid @default-color;
+    color: @mainFontColor;
+    border: 1px solid @mainFontColor;
     background-color: #000;
     text-align: center;
 
     &::-webkit-input-placeholder {
-        color: @default-color;
+        color: @mainFontColor;
     }
 
     &:-moz-placeholder { /* Firefox 18- */
-        color: @default-color;
+        color: @mainFontColor;
     }
 
     &::-moz-placeholder {  /* Firefox 19+ */
-        color: @default-color;
+        color: @mainFontColor;
     }
 
     &:-ms-input-placeholder {
-        color: @default-color;
+        color: @mainFontColor;
     }
 }
 .nav-title {
     text-transform: uppercase;
-    color: @default-color;
+    color: @mainFontColor;
     font-size: 35px;
-    padding-bottom:60px;
+    padding-bottom: 20px;
     text-align: center;
-    font-family: sans-serif;
 }
 .login-btn, .preset-name {
     height: 70px;
@@ -64,11 +60,10 @@ input {
     text-transform: uppercase;
     font-size: 25px;
     line-height: 70px;
-    color: @default-color;
-    border: 1px solid @default-color;
+    color: @mainFontColor;
+    border: 1px solid @mainFontColor;
     background-color: #000;
     text-align: center;
-    font-family: sans-serif;
     font-weight: bold
 }
 .preset-name {
@@ -87,7 +82,7 @@ input {
             content: '';
             width: 5px;
             height: 30px;
-            background-color: @default-color;
+            background-color: @mainFontColor;
             position: absolute;
             right: 13px;
         }
@@ -101,7 +96,7 @@ input {
     }
 
     &:active {
-        background-color: @default-color;
+        background-color: @mainFontColor;
         color: #000;
 
         .preset-delete {
@@ -116,12 +111,14 @@ input {
 .preset {
     margin-bottom: 10px;
 }
+
 .edit-container {
     width: 100%;
 }
 
 .action-name {
-    color: @default-color;
+    color: @mainFontColor;
+    padding-bottom: 0.5em;
     text-align: center;
     font-size:  40px;
     font-weight:  bold;
@@ -130,12 +127,36 @@ input {
 .action-row {
     padding-bottom: 3em;
 }
+
 .flex-parent {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    &.sp-bt {
+        justify-content: space-between;
+    }
+    &.sp-ar {
+        justify-content: space-around;
+    }
+    &.cn {
+        justify-content: center;
+    }
 }
 
 .flex-child {
     flex-grow: 1;
+  &.double {
+    flex-grow: 2;
+  }
 }
+
+.divider-text {
+  font-size: 2em;
+  font-weight: bold;
+  text-align: center;
+}
+.save-changes {
+  input {
+    width: 50%;
+  }
+}
+
