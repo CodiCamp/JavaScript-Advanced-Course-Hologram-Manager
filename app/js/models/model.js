@@ -111,7 +111,7 @@ var app = window.app || {};
      *   @param {String} email
      *   @param {String} password
      */
-    model.authenticate = function authenticateUser (data) {
+    model.authenticate = function(data) {
 
         /**
          * Current support is only online authentication
@@ -122,6 +122,19 @@ var app = window.app || {};
         });
     };
 
+    model.registerUser = function(data) {
+
+        /**
+         * Current support is only online authentication
+         */
+        model.online.registerUser({
+            email: data.email,
+            password: data.password
+        });
+    };
+
     // TO DO: Authenticate user with OAUTH
+
+    // PROBLEM : model.online , model[model.mode] are undefined
 
 })(window);

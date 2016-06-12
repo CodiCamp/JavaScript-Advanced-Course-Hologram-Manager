@@ -81,11 +81,26 @@
 
             evnt.preventDefault();
 
-            // TO DO: validate fields
-            app.model.registerUser({
-                email: this.elements.emailField.value,
-                password: this.elements.passwordField.value
-            });
+            var err = '';
+
+            if(view.elements.passwordField.value != view.elements.confirmPassword.value){
+                err += "Passwords aren't matching! \n";
+            }
+
+            if (!view.validateEmail(view.elements.emailField.value)) {
+                err += "Invalid email address!";
+            }
+
+            if(!err){
+
+                app.model.registerUser({
+                    email: view.elements.emailField.value,
+                    password: view.elements.passwordField.value
+                });
+            }
+            else {
+                console.log(err);
+            }
         },
 
         /**
@@ -103,6 +118,11 @@
         close: function () {
             console.log('sub nav closed - register'); //@todo: remove
             this.placeholder.style.display = 'none';
+        },
+
+        validateEmail: function(email) {
+            var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(email);
         },
 
         /**

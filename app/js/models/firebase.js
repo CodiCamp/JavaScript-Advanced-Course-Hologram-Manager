@@ -110,7 +110,7 @@ var app = window.app || {};
          * data.password
          * @return {Void}
          */
-        registerUser: function registerNewUser (data) {
+        registerUser: function (data) {
 
             app.DB.createUser({
                email: data.email,
@@ -119,6 +119,7 @@ var app = window.app || {};
         },
 
         oAuthenticate : oAuthenticate,
+        registerUser : registerUser,
 
 
         /**
