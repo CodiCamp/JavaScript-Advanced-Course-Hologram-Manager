@@ -5,6 +5,7 @@
 var app = window.app || {};
 
 (function (global) {
+
     var model = app.model = app.model || {};
 
     /**
@@ -122,6 +123,11 @@ var app = window.app || {};
         });
     };
 
+    model.oAuthenticate = function(){
+
+        model.online.oAuthenticate();
+    };
+
     model.registerUser = function(data) {
 
         /**
@@ -132,9 +138,5 @@ var app = window.app || {};
             password: data.password
         });
     };
-
-    // TO DO: Authenticate user with OAUTH
-
-    // PROBLEM : model.online , model[model.mode] are undefined
 
 })(window);
