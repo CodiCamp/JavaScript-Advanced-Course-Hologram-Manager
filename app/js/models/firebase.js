@@ -39,14 +39,6 @@ var app = window.app || {};
         }
     }
 
-    function registerHandler (error) {
-        if(!error) {
-
-        } else {
-
-        }
-    }
-
     /**
      * Get initial data from firebase
      * @retun {Void}
@@ -68,13 +60,14 @@ var app = window.app || {};
      * @param {String} oAuthString - facebook , google , github
      */
     function oAuthenticate(){
+
         var oAuthString = this.dataset.method;
 
         app.DB.authWithOAuthPopup(oAuthString, function(error, authData) {
           if (error) {
             console.log("Login Failed!", error);
           } else {
-            console.log("Authenticated successfully with github:", authData);
+            console.log("Authenticated successfully with:", authData);
           }
         },
         {
@@ -110,12 +103,27 @@ var app = window.app || {};
          * data.password
          * @return {Void}
          */
-        registerUser: function registerNewUser (data) {
+        registerUser: function (data) {
 
             app.DB.createUser({
                email: data.email,
                password: data.password
-            }, registerHandler);
+            }, function(error, userData) {
+              if (error) {
+                switch (error.code) {
+                  case "EMAIL_TAKEN":
+                    console.log("The new user account cannot be created because the email is already in use.");
+                    break;
+                  case "INVALID_EMAIL":
+                    console.log("The specified email is not a valid email.");
+                    break;
+                  default:
+                    console.log("Error creating user:", error);
+                }
+              } else {
+                console.log("Successfully created user account :", userData);
+              }
+            });
         },
 
         oAuthenticate : oAuthenticate,

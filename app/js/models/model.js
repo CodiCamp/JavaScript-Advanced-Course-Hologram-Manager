@@ -5,6 +5,7 @@
 var app = window.app || {};
 
 (function (global) {
+
     var model = app.model = app.model || {};
 
     /**
@@ -111,7 +112,7 @@ var app = window.app || {};
      *   @param {String} email
      *   @param {String} password
      */
-    model.authenticate = function authenticateUser (data) {
+    model.authenticate = function(data) {
 
         /**
          * Current support is only online authentication
@@ -122,6 +123,20 @@ var app = window.app || {};
         });
     };
 
-    // TO DO: Authenticate user with OAUTH
+    model.oAuthenticate = function(){
+
+        model.online.oAuthenticate();
+    };
+
+    model.registerUser = function(data) {
+
+        /**
+         * Current support is only online authentication
+         */
+        model.online.registerUser({
+            email: data.email,
+            password: data.password
+        });
+    };
 
 })(window);
